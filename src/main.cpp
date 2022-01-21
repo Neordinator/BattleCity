@@ -6,11 +6,11 @@
 #include <iostream>
 
 // СОБСТВЕННЫЕ
-
+#include "Renderer/ShaderProgram.h"
 
 GLfloat point[] = {
 	0.0f, 0.5f, 0.0f,
-	0.5f, 0.5f, 0.0f,
+	0.5f, -0.5f, 0.0f,
 	-0.5f, -0.5f, 0.0f
 };
 GLfloat colors[] = {
@@ -28,7 +28,7 @@ const char* vertex_shader =
 "	color = vertex_color;"
 "	gl_Position = vec4(vertex_position, 1.0);"
 "}";
-const char* vertex_shader = 
+const char* fragment_shader = 
 "#version 460\n"
 "in vec3 color;"
 "out vec4 frag_color;"
@@ -63,12 +63,12 @@ int main(void)
 		return -1;
 	}
 	
-	glfwWindowHint(GLFW_CONTEST_VERSION_MAJOR, 4);
-	glfwWindowHint(GLFW_CONTEST_VERSION_MINOR, 6);
+	glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 4);
+	glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 6);
 	glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
 	
 	// Create a windowed mode window and its OpenGL context
-	GLFWWindow* window = glfwCreateWindow(WINDOW_WIDTH, WINDOW_HEIGHT, "Void 0.01", nullptr, nullptr);
+	GLFWwindow* pWindow = glfwCreateWindow(WINDOW_WIDTH, WINDOW_HEIGHT, "Void 0.01", nullptr, nullptr);
 	if(!pWindow)
 	{
 		std::cout << "glfwCreateWindow failed!" << std::endl;
@@ -76,7 +76,7 @@ int main(void)
 		return -1;
 	}
 	
-	glfwWindowSizeCallback(pWindow, glfwWindowSizeCallback);
+	glfwSetWindowSizeCallback(pWindow, glfwWindowSizeCallback);
 	glfwSetKeyCallback(pWindow, glfwKeyCallback);
 	
 	// Make the window's context current
@@ -92,20 +92,14 @@ int main(void)
 	
 	glClearColor(1, 1, 0, 1);
 	
-	GLuint vs = glCreateShader(GL_VERTEX_SHADER);
-	glShaderSource(vs, 1, &vertex_shader, nullptr);
-	glCompileShader(vs);
-	GLuint fs = glCreateShader(GL_FRAGMENT_SHADER);
-	glShaderSource(fs, 1, &fragment_shader, nullptr);
-	glCompileShader(fs);
-	
-	GLuint shader_program = glCreateProgram();
-	glAttachShader(shader_program, vs);
-	glAttachShader(shader_program, fs);
-	glLinkProgram(shader_program);
-	
-	glDeleteShader(vs);
-	glDeleteShader(fs);
+	std::string vertexShader(vertex_shader);
+	std::string fragmentShader(fragment_shader);
+	Renderer::ShaderProgram shaderProgram(vertexShader, fragmentShader);
+	if (!shaderProgram.isCompiled())
+	{
+		std::cerr << "Can't create shader program!" << std::endl;
+		return -1;
+	}
 	
 	GLuint points_vbo = 0;
 	glGenBuffers(1, &points_vbo);
@@ -135,7 +129,7 @@ int main(void)
 		// Render here
 		glClear(GL_COLOR_BUFFER_BIT);
 		
-		glUseProgram(shader_program);
+		shaderProgram.use();
 		glBindVertexArray(vao);
 		glDrawArrays(GL_TRIANGLES, 0, 3);
 		
