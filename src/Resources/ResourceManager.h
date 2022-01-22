@@ -27,6 +27,7 @@ public:
 
 	std::shared_ptr<Renderer::ShaderProgram> loadShaders(const std::string&, const std::string&, const std::string&);
 	std::shared_ptr<Renderer::ShaderProgram> getShader(const std::string&);
+	void loadTexture(const std::string&, const std::string&);
 private:
 	typedef std::map<const std::string, std::shared_ptr<Renderer::ShaderProgram>> ShaderProgramsMap;
 	ShaderProgramsMap m_shaderPrograms;
