@@ -8,10 +8,12 @@
 #include <map>
 
 #include "../Renderer/ShaderProgram.h"
+#include "../Renderer/Texture2D.h"
 
 namespace Renderer
 {
 	class ShaderProgram;
+	class Texture2D;
 }
 
 class ResourceManager
@@ -27,12 +29,17 @@ public:
 
 	std::shared_ptr<Renderer::ShaderProgram> loadShaders(const std::string&, const std::string&, const std::string&);
 	std::shared_ptr<Renderer::ShaderProgram> getShader(const std::string&);
-	void loadTexture(const std::string&, const std::string&);
+	std::shared_ptr<Renderer::Texture2D> loadTexture(const std::string&, const std::string&);
+	std::shared_ptr<Renderer::Texture2D> getTexture(const std::string&);
 private:
 	typedef std::map<const std::string, std::shared_ptr<Renderer::ShaderProgram>> ShaderProgramsMap;
 	ShaderProgramsMap m_shaderPrograms;
 
+	typedef std::map<const std::string, std::shared_ptr<Renderer::Texture2D>> TexturesMap;
+	TexturesMap m_textures;
+
 	std::string m_path;
+
 
 	std::string getFileString(const std::string&) const;
 };
