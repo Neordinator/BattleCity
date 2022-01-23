@@ -1,6 +1,7 @@
 // СТОРОННИЕ
 #include <glad/glad.h>
 #include <GLFW/glfw3.h>
+#include <glm/vec2.hpp>
 
 // ИЗ КОРОБКИ
 #include <iostream>
@@ -25,14 +26,19 @@ GLfloat texCoord[] = {
 	0.0f, 0.0f
 };
 
-int WINDOW_WIDTH = 640;
-int WINDOW_HEIGHT = 480;
+glm::vec2 windowSize(640, 480);
+
+/*int WINDOW_WIDTH = 640;
+int WINDOW_HEIGHT = 480;*/
 
 void glfwWindowSizeCallback(GLFWwindow* pWindow, int width, int height)
 {
-	WINDOW_WIDTH = width;
+	/*WINDOW_WIDTH = width;
 	WINDOW_HEIGHT = height;
-	glViewport(0, 0, WINDOW_WIDTH, WINDOW_HEIGHT);
+	glViewport(0, 0, WINDOW_WIDTH, WINDOW_HEIGHT);*/
+	windowSize.x = width;
+	windowSize.y = height;
+	glViewport(0, 0, windowSize.x, windowSize.y);
 }
 
 void glfwKeyCallback(GLFWwindow* pWindow, int key, int scancode, int action, int mode)
@@ -57,7 +63,8 @@ int main(int argc, char** argv)
 	glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
 
 	// Create a windowed mode window and its OpenGL context
-	GLFWwindow* pWindow = glfwCreateWindow(WINDOW_WIDTH, WINDOW_HEIGHT, "Void 0.01", nullptr, nullptr);
+	//GLFWwindow* pWindow = glfwCreateWindow(WINDOW_WIDTH, WINDOW_HEIGHT, "Void 0.01", nullptr, nullptr);
+	GLFWwindow* pWindow = glfwCreateWindow(windowSize.x, windowSize.y, "Void 0.01", nullptr, nullptr);
 	if (!pWindow)
 	{
 		std::cout << "glfwCreateWindow failed!" << std::endl;

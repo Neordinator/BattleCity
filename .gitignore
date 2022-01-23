@@ -1,3 +1,5 @@
 build
-*res/textures/
+res/textures/*
 !res/textures/map_16x16.png
+external/glm/*
+!external/glm/glm
