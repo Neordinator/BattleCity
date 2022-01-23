@@ -14,8 +14,8 @@ namespace Renderer
 
 		Texture2D(const GLuint, GLuint, const unsigned char*, const unsigned int, const GLenum, const GLenum);
 		~Texture2D();
-		Texture2D(Texture2D&& texture2d);
-		Texture2D& operator=(Texture2D&& texture2d);
+		Texture2D(Texture2D&&) noexcept;
+		Texture2D& operator=(Texture2D&&) noexcept;
 
 		void bind() const;
 	private:

@@ -18,6 +18,7 @@ namespace Renderer
 		~ShaderProgram();
 		ShaderProgram& operator=(ShaderProgram&&) noexcept;
 		ShaderProgram(ShaderProgram&&) noexcept;
+		void setInt(const std::string&, const GLint);
 		bool isCompiled() const { return m_isCompiled; }
 		void use() const;
 	private:

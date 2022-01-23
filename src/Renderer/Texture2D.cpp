@@ -14,15 +14,16 @@ namespace Renderer
 			m_mode = GL_RGBA;
 			break;
 		case 3:
-			m_mode = GL_RGBA;
+			m_mode = GL_RGB;
 			break;
 		default:
 			m_mode = GL_RGBA;
 			break;
 		}
 		glGenTextures(1, &m_ID); //делаем m_ID текущей
+		glActiveTexture(GL_TEXTURE0);
 		glBindTexture(GL_TEXTURE_2D, m_ID); //биндим m_ID с GL_TEXTURE_2D
-		glTexImage2D(GL_TEXTURE_2D, 0, m_mode, m_width, m_height, 0, GL_RGB, GL_UNSIGNED_BYTE, data);
+		glTexImage2D(GL_TEXTURE_2D, 0, m_mode, m_width, m_height, 0, m_mode, GL_UNSIGNED_BYTE, data);
 
 		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, wrapMode);
 		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, wrapMode);
@@ -36,7 +37,7 @@ namespace Renderer
 	{
 		glDeleteTextures(1, &m_ID);
 	}
-	Texture2D::Texture2D(Texture2D&& texture2d)
+	Texture2D::Texture2D(Texture2D&& texture2d) noexcept
 	{
 		m_ID = texture2d.m_ID;
 		texture2d.m_ID = 0;
@@ -44,7 +45,7 @@ namespace Renderer
 		m_width = texture2d.m_width;
 		m_height = texture2d.m_height;
 	}
-	Texture2D& Texture2D::operator=(Texture2D&& texture2d)
+	Texture2D& Texture2D::operator=(Texture2D&& texture2d) noexcept
 	{
 		glDeleteTextures(1, &m_ID);
 		m_ID = texture2d.m_ID;
@@ -53,5 +54,9 @@ namespace Renderer
 		m_width = texture2d.m_width;
 		m_height = texture2d.m_height;
 		return *this;
+	}
+	void Texture2D::bind() const
+	{
+		glBindTexture(GL_TEXTURE_2D, m_ID); //биндим m_ID с GL_TEXTURE_2D
 	}
 }
