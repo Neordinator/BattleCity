@@ -1,6 +1,8 @@
 #pragma once
 
 #include <glad/glad.h>
+#include <glm/mat4x4.hpp>
+#include <glm/gtc/type_ptr.hpp>
 
 #include <string>
 #include <iostream>
@@ -21,6 +23,7 @@ namespace Renderer
 		void setInt(const std::string&, const GLint);
 		bool isCompiled() const { return m_isCompiled; }
 		void use() const;
+		void setMatrix4(const std::string& name, const glm::mat4& matrix);
 	private:
 		bool m_isCompiled{ false };
 		GLuint m_ID{ 0 };
