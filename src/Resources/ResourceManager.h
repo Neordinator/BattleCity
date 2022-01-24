@@ -9,6 +9,7 @@
 
 #include "../Renderer/ShaderProgram.h"
 #include "../Renderer/Texture2D.h"
+#include "../Renderer/Sprite.h"
 
 namespace Renderer
 {
@@ -29,14 +30,21 @@ public:
 
 	std::shared_ptr<Renderer::ShaderProgram> loadShaders(const std::string&, const std::string&, const std::string&);
 	std::shared_ptr<Renderer::ShaderProgram> getShader(const std::string&);
+
 	std::shared_ptr<Renderer::Texture2D> loadTexture(const std::string&, const std::string&);
 	std::shared_ptr<Renderer::Texture2D> getTexture(const std::string&);
+
+	std::shared_ptr<Renderer::Sprite> loadSprite(const std::string&, const std::string&, const std::string&, const unsigned int, const unsigned int);
+	std::shared_ptr<Renderer::Sprite> getSprite(const std::string&);
 private:
 	typedef std::map<const std::string, std::shared_ptr<Renderer::ShaderProgram>> ShaderProgramsMap;
 	ShaderProgramsMap m_shaderPrograms;
 
 	typedef std::map<const std::string, std::shared_ptr<Renderer::Texture2D>> TexturesMap;
 	TexturesMap m_textures;
+
+	typedef std::map<const std::string, std::shared_ptr<Renderer::Sprite>> SpritesMap;
+	SpritesMap m_sprites;
 
 	std::string m_path;
 
