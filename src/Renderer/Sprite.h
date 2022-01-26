@@ -12,7 +12,7 @@
 namespace Renderer
 {
 	class Texture2D;
-	class Texture2D;
+	class SubTexture2D;
 
 	class Sprite
 	{
@@ -20,7 +20,7 @@ namespace Renderer
 		Sprite(const Sprite&) = delete;
 		Sprite& operator=(const Sprite&) = delete;
 
-		Sprite(const std::shared_ptr<Texture2D>, const std::shared_ptr<ShaderProgram>, const glm::vec2&, const glm::vec2&, const float);
+		Sprite(const std::shared_ptr<Texture2D>, const std::string, const std::shared_ptr<ShaderProgram>, const glm::vec2&, const glm::vec2&, const float);
 		~Sprite();
 
 		void render() const;
@@ -37,5 +37,7 @@ namespace Renderer
 		GLuint m_VAO;
 		GLuint m_vertexCoordsVBO;
 		GLuint m_textureCoordsVBO;
+		/*glm::vec2 m_currentLeftBottomUV;
+		glm::vec2 m_currentRightTopUV;*/
 	};
 }

@@ -5,6 +5,7 @@
 #include <iostream>
 #include <string>
 #include <memory>
+#include <vector>
 #include <map>
 
 #include "../Renderer/ShaderProgram.h"
@@ -34,8 +35,11 @@ public:
 	std::shared_ptr<Renderer::Texture2D> loadTexture(const std::string&, const std::string&);
 	std::shared_ptr<Renderer::Texture2D> getTexture(const std::string&);
 
-	std::shared_ptr<Renderer::Sprite> loadSprite(const std::string&, const std::string&, const std::string&, const unsigned int, const unsigned int);
+	std::shared_ptr<Renderer::Sprite> loadSprite(const std::string&, const std::string&, const std::string&, const unsigned int, const unsigned int, const std::string&);
 	std::shared_ptr<Renderer::Sprite> getSprite(const std::string&);
+
+	std::shared_ptr<Renderer::Texture2D> loadTextureAtlas(const std::string&, const std::string&, const std::vector<std::string>, const unsigned int, const unsigned int);
+
 private:
 	typedef std::map<const std::string, std::shared_ptr<Renderer::ShaderProgram>> ShaderProgramsMap;
 	ShaderProgramsMap m_shaderPrograms;
