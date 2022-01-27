@@ -2,6 +2,9 @@
 
 namespace Renderer
 {
+
+	SubTexture2D::SubTexture2D(const glm::vec2& _leftBottomUV, const glm::vec2& _rightTopUV) : leftBottomUV(_leftBottomUV), rightTopUV(_rightTopUV) {}
+	SubTexture2D::SubTexture2D() : leftBottomUV(0.f), rightTopUV(1.f) {}
 	Texture2D::Texture2D(const GLuint width, GLuint height,
 		const unsigned char* data,
 		const unsigned int channels = 4,

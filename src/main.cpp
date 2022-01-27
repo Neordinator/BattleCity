@@ -7,6 +7,7 @@
 
 // ИЗ КОРОБКИ
 #include <iostream>
+#include <chrono>
 
 // СОБСТВЕННЫЕ
 //#include "Renderer/ShaderProgram.h"
@@ -30,6 +31,8 @@ GLfloat texCoord[] = {
 
 glm::vec2 windowSize(640, 480);
 
+unsigned int stateSwitcher = 0;
+
 /*int WINDOW_WIDTH = 640;
 int WINDOW_HEIGHT = 480;*/
 
@@ -48,6 +51,14 @@ void glfwKeyCallback(GLFWwindow* pWindow, int key, int scancode, int action, int
 	if(key == GLFW_KEY_ESCAPE && action == GLFW_PRESS)
 	{
 		glfwSetWindowShouldClose(pWindow, GL_TRUE);
+	}
+	if (key == GLFW_KEY_ENTER && action == GLFW_PRESS)
+	{
+		++stateSwitcher;
+		if (stateSwitcher > 9)
+		{
+			stateSwitcher ^= stateSwitcher;
+		}
 	}
 }
 
@@ -106,13 +117,95 @@ int main(int argc, char** argv)
 			return -1;
 		}
 
-		auto tex = resourceManager.loadTexture("DefaultTexture", "res/textures/map_16x16.png");
+		auto tex = resourceManager.loadTexture("BattleCityTexture", "res/textures/BattleCity_16x16.png");
 
-		std::vector<std::string> subTexturesNames = { "block", "topBlock", "bottomBlock", "leftBlock", "rightBlock", "topLeftBlock", "topRightBlock", "bottomLeftBlock", "bottomRightBlock", "beton" };
-		auto pTextureAtlas = resourceManager.loadTextureAtlas("DefaultTextureAtlas", "res/textures/map_16x16.png", std::move(subTexturesNames), 16, 16);
+		std::vector<std::string> battleCitySubTexturesNames = {
+			"block", "topBlock", "bottomBlock", "leftBlock", "rightBlock", "topLeftBlock", "topRightBlock", "bottomLeftBlock", "bottomRightBlock",
+			"beton", "topBeton", "bottomBeton", "leftBeton", "rightBeton", "topLeftBeton", "topRightBeton", "bottomLeftBeton", "bottomRightBeton",
+			"water1", "water2", "water3", "trees", "ice", "wall", "eagle", "deadEagle", "nothing", "respawn1", "respawn2", "respawn3", "respawn4"
+		};
+		auto pBattleCityTextureAtlas = resourceManager.loadTextureAtlas("BattleCityTextureAtlas", "res/textures/BattleCity_16x16.png", std::move(battleCitySubTexturesNames), 16, 16);
+		auto pBattleCitySprite = resourceManager.loadSprite("BattleCitySprite", "BattleCityTextureAtlas", "SpriteShader", 100, 100, "block");
+		pBattleCitySprite->setPosition(glm::vec2(300, 100));
+		auto pBattleCityAnimatedSprite = resourceManager.loadAnimatedSprite("BattleCityAnimatedSprite", "BattleCityTextureAtlas", "SpriteShader", 100, 100, "beton");
+		pBattleCityAnimatedSprite->setPosition(glm::vec2(300, 300));
+		std::vector<std::pair<std::string, uint64_t>> waterState;
+		waterState.emplace_back(std::make_pair<std::string, uint64_t>("water1", 500000000));
+		waterState.emplace_back(std::make_pair<std::string, uint64_t>("water2", 500000000));
+		waterState.emplace_back(std::make_pair<std::string, uint64_t>("water3", 500000000));
+		std::vector<std::pair<std::string, uint64_t>> eagleState;
+		eagleState.emplace_back(std::make_pair<std::string, uint64_t>("eagle", 10000000000));
+		eagleState.emplace_back(std::make_pair<std::string, uint64_t>("deadEagle", 10000000000));
+		pBattleCityAnimatedSprite->insertState("waterState", std::move(waterState));
+		pBattleCityAnimatedSprite->insertState("eagleState", std::move(eagleState));
+		pBattleCityAnimatedSprite->setState("waterState");
 
-		auto pSprite = resourceManager.loadSprite("NewSprite", "DefaultTextureAtlas", "SpriteShader", 100, 100, "block");
-		pSprite->setPosition(glm::vec2(300, 100));
+
+		std::vector<std::string> animeGirlSubTexturesNames = {
+			"normal1",		"normal2",		"normal3",		"hurt1",		"hurt2",		"hurt3",
+			"victory1",		"victory2",		"victory3",		"afraid1",		"afraid2",		"afraid3",
+			"sad1",			"sad2",			"sad3",			"angry1",		"angry2",		"angry3",
+			"depressed1",	"depressed2",	"depressed3",	"enraged1",		"enraged2",		"enraged3",
+			"happy1",		"happy2",		"happy3",		"ecstatic1",	"ecstatic2",	"ecstatic3"
+		};
+		auto pAnimeGirlTextureAtlas = resourceManager.loadTextureAtlas("AnimeGirlTextureAtlas", "res/textures/AnimeGirlPortrait.png", std::move(animeGirlSubTexturesNames), 106, 106);
+		auto pAnimeGirlSprite = resourceManager.loadSprite("AnimeGirlSprite", "AnimeGirlTextureAtlas", "SpriteShader", 100, 100, "hurt1");
+		pAnimeGirlSprite->setPosition(glm::vec2(300, 200));
+		auto pAnimeGirlAnimatedSprite = resourceManager.loadAnimatedSprite("AnimeGirlAnimatedSprite", "AnimeGirlTextureAtlas", "SpriteShader", 100, 100, "sad1");
+		pAnimeGirlAnimatedSprite->setPosition(glm::vec2(300, 400));
+		std::vector<std::pair<std::string, uint64_t>> normalState;
+		normalState.emplace_back(std::make_pair<std::string, uint64_t>("normal1", 50000000));
+		normalState.emplace_back(std::make_pair<std::string, uint64_t>("normal2", 50000000));
+		normalState.emplace_back(std::make_pair<std::string, uint64_t>("normal3", 50000000));
+		std::vector<std::pair<std::string, uint64_t>> hurtState;
+		hurtState.emplace_back(std::make_pair<std::string, uint64_t>("hurt1", 50000000));
+		hurtState.emplace_back(std::make_pair<std::string, uint64_t>("hurt2", 50000000));
+		hurtState.emplace_back(std::make_pair<std::string, uint64_t>("hurt3", 50000000));
+		std::vector<std::pair<std::string, uint64_t>> victoryState;
+		victoryState.emplace_back(std::make_pair<std::string, uint64_t>("victory1", 50000000));
+		victoryState.emplace_back(std::make_pair<std::string, uint64_t>("victory2", 50000000));
+		victoryState.emplace_back(std::make_pair<std::string, uint64_t>("victory3", 50000000));
+		std::vector<std::pair<std::string, uint64_t>> afraidState;
+		afraidState.emplace_back(std::make_pair<std::string, uint64_t>("afraid1", 50000000));
+		afraidState.emplace_back(std::make_pair<std::string, uint64_t>("afraid2", 50000000));
+		afraidState.emplace_back(std::make_pair<std::string, uint64_t>("afraid3", 50000000));
+		std::vector<std::pair<std::string, uint64_t>> sadState;
+		sadState.emplace_back(std::make_pair<std::string, uint64_t>("sad1", 50000000));
+		sadState.emplace_back(std::make_pair<std::string, uint64_t>("sad2", 50000000));
+		sadState.emplace_back(std::make_pair<std::string, uint64_t>("sad3", 50000000));
+		std::vector<std::pair<std::string, uint64_t>> angryState;
+		angryState.emplace_back(std::make_pair<std::string, uint64_t>("angry1", 50000000));
+		angryState.emplace_back(std::make_pair<std::string, uint64_t>("angry2", 50000000));
+		angryState.emplace_back(std::make_pair<std::string, uint64_t>("angry3", 50000000));
+		std::vector<std::pair<std::string, uint64_t>> depressedState;
+		depressedState.emplace_back(std::make_pair<std::string, uint64_t>("depressed1", 50000000));
+		depressedState.emplace_back(std::make_pair<std::string, uint64_t>("depressed2", 50000000));
+		depressedState.emplace_back(std::make_pair<std::string, uint64_t>("depressed3", 50000000));
+		std::vector<std::pair<std::string, uint64_t>> enragedState;
+		enragedState.emplace_back(std::make_pair<std::string, uint64_t>("enraged1", 50000000));
+		enragedState.emplace_back(std::make_pair<std::string, uint64_t>("enraged2", 50000000));
+		enragedState.emplace_back(std::make_pair<std::string, uint64_t>("enraged3", 50000000));
+		std::vector<std::pair<std::string, uint64_t>> happyState;
+		happyState.emplace_back(std::make_pair<std::string, uint64_t>("happy1", 50000000));
+		happyState.emplace_back(std::make_pair<std::string, uint64_t>("happy2", 50000000));
+		happyState.emplace_back(std::make_pair<std::string, uint64_t>("happy3", 50000000));
+		std::vector<std::pair<std::string, uint64_t>> ecstaticState;
+		ecstaticState.emplace_back(std::make_pair<std::string, uint64_t>("ecstatic1", 50000000));
+		ecstaticState.emplace_back(std::make_pair<std::string, uint64_t>("ecstatic2", 50000000));
+		ecstaticState.emplace_back(std::make_pair<std::string, uint64_t>("ecstatic2", 50000000));
+		pAnimeGirlAnimatedSprite->insertState("normalState", std::move(normalState));
+		pAnimeGirlAnimatedSprite->insertState("hurtState", std::move(hurtState));
+		pAnimeGirlAnimatedSprite->insertState("victoryState", std::move(victoryState));
+		pAnimeGirlAnimatedSprite->insertState("afraidState", std::move(afraidState));
+		pAnimeGirlAnimatedSprite->insertState("sadState", std::move(sadState));
+		pAnimeGirlAnimatedSprite->insertState("angryState", std::move(angryState));
+		pAnimeGirlAnimatedSprite->insertState("depressedState", std::move(depressedState));
+		pAnimeGirlAnimatedSprite->insertState("enragedState", std::move(enragedState));
+		pAnimeGirlAnimatedSprite->insertState("happyState", std::move(happyState));
+		pAnimeGirlAnimatedSprite->insertState("ecstaticState", std::move(ecstaticState));
+		pAnimeGirlAnimatedSprite->setState("normalState");
+
+
 
 		GLuint points_vbo = 0;
 		glGenBuffers(1, &points_vbo);
@@ -162,9 +255,49 @@ int main(int argc, char** argv)
 		pSpriteShaderProgram->setInt("tex", 0);
 		pSpriteShaderProgram->setMatrix4("projectionMat", projectionMatrix);
 
+		auto lastTime = std::chrono::high_resolution_clock::now();
 		// Loop until the user closes the window
 		while (!glfwWindowShouldClose(pWindow))
 		{
+			switch (stateSwitcher)
+			{
+			case 0:
+				pAnimeGirlAnimatedSprite->setState("normalState");
+				break;
+			case 1:
+				pAnimeGirlAnimatedSprite->setState("hurtState");
+				break;
+			case 2:
+				pAnimeGirlAnimatedSprite->setState("victoryState");
+				break;
+			case 3:
+				pAnimeGirlAnimatedSprite->setState("afraidState");
+				break;
+			case 4:
+				pAnimeGirlAnimatedSprite->setState("sadState");
+				break;
+			case 5:
+				pAnimeGirlAnimatedSprite->setState("angryState");
+				break;
+			case 6:
+				pAnimeGirlAnimatedSprite->setState("depressedState");
+				break;
+			case 7:
+				pAnimeGirlAnimatedSprite->setState("enragedState");
+				break;
+			case 8:
+				pAnimeGirlAnimatedSprite->setState("happyState");
+				break;
+			case 9:
+				pAnimeGirlAnimatedSprite->setState("ecstaticState");
+				break;
+
+			}
+			auto currentTime = std::chrono::high_resolution_clock::now();
+			uint64_t duration = std::chrono::duration_cast<std::chrono::nanoseconds>(currentTime - lastTime).count();
+			lastTime = currentTime;
+			pBattleCityAnimatedSprite->update(duration);
+			pAnimeGirlAnimatedSprite->update(duration);
 			// Render here
 			glClear(GL_COLOR_BUFFER_BIT);
 
@@ -177,7 +310,9 @@ int main(int argc, char** argv)
 			pDefaultShaderProgram->setMatrix4("modelMat", modelMatrix_2);
 			glDrawArrays(GL_TRIANGLES, 0, 3);
 
-			pSprite->render();
+			pBattleCitySprite->render();
+			pBattleCityAnimatedSprite->render();
+			pAnimeGirlAnimatedSprite->render();
 
 			// Swap front and back buffers
 			glfwSwapBuffers(pWindow);

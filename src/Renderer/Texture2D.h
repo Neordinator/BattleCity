@@ -12,10 +12,8 @@ namespace Renderer
 		glm::vec2 leftBottomUV;
 		glm::vec2 rightTopUV;
 
-		SubTexture2D(const glm::vec2&, const glm::vec2&) : leftBottomUV(0.f), rightTopUV(1.f)
-		{}
-		SubTexture2D() : leftBottomUV(0.f), rightTopUV(1.f)
-		{}
+		SubTexture2D(const glm::vec2&, const glm::vec2&);
+		SubTexture2D();
 	};
 	class Texture2D
 	{
