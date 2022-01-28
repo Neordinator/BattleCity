@@ -3,10 +3,24 @@
 #define STBI_ONLY_PNG
 #include "stb_image.h"
 
-ResourceManager::ResourceManager(const std::string& executablePath)
+ResourceManager::ShaderProgramsMap ResourceManager::m_shaderPrograms;
+ResourceManager::TexturesMap ResourceManager::m_textures;
+ResourceManager::SpritesMap ResourceManager::m_sprites;
+ResourceManager::AnimatedSpritesMap ResourceManager::m_animatedSprites;
+std::string ResourceManager::m_path;
+
+void ResourceManager::setExecutablePath(const std::string& executablePath)
 {
 	size_t found = executablePath.find_last_of("/\\");
 	m_path = executablePath.substr(0, found);
+}
+
+void ResourceManager::unloadAllResources()
+{
+	m_shaderPrograms.clear();
+	m_textures.clear();
+	m_sprites.clear();
+	m_animatedSprites.clear();
 }
 
 std::shared_ptr<Renderer::ShaderProgram> ResourceManager::loadShaders(const std::string& shaderName, const std::string& vertexPath, const std::string& fragmentPath)
@@ -34,7 +48,7 @@ std::shared_ptr<Renderer::ShaderProgram> ResourceManager::loadShaders(const std:
 	return nullptr;
 }
 
-std::shared_ptr<Renderer::ShaderProgram> ResourceManager::getShader(const std::string& shaderName)
+std::shared_ptr<Renderer::ShaderProgram> ResourceManager::getShaderProgram(const std::string& shaderName)
 {
 	ShaderProgramsMap::const_iterator it = m_shaderPrograms.find(shaderName);
 	if (it != m_shaderPrograms.end())
@@ -88,7 +102,7 @@ std::shared_ptr<Renderer::Sprite> ResourceManager::loadSprite(
 	{
 		std::cerr << "Can't find the texture: " << textureName << " for the sprite: " << spriteName << std::endl;
 	}
-	auto pShader = getShader(shaderName);
+	auto pShader = getShaderProgram(shaderName);
 	if (!pShader)
 	{
 		std::cerr << "Can't find the shader: " << shaderName << " for the sprite: " << spriteName << std::endl;
@@ -123,7 +137,7 @@ std::shared_ptr<Renderer::AnimatedSprite> ResourceManager::loadAnimatedSprite(
 	{
 		std::cerr << "Can't find the texture: " << textureName << " for the sprite: " << spriteName << std::endl;
 	}
-	auto pShader = getShader(shaderName);
+	auto pShader = getShaderProgram(shaderName);
 	if (!pShader)
 	{
 		std::cerr << "Can't find the shader: " << shaderName << " for the sprite: " << spriteName << std::endl;
@@ -175,7 +189,7 @@ std::shared_ptr<Renderer::Texture2D> ResourceManager::loadTextureAtlas(std::stri
 	return pTexture;
 }
 
-std::string ResourceManager::getFileString(const std::string& relativeFilePath) const
+std::string ResourceManager::getFileString(const std::string& relativeFilePath)
 {
 	std::ifstream f;
 	f.open(m_path + "/" + relativeFilePath.c_str(), std::ios::in | std::ios::binary);

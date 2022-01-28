@@ -15,6 +15,10 @@ add_executable(${PROJECT_NAME}
 	src/Renderer/AnimatedSprite.cpp
 	src/Resources/ResourceManager.h
 	src/Resources/ResourceManager.cpp
+	src/Game/Game.h
+	src/Game/Game.cpp
+	src/Game/BattleCity/Panzer.h
+	src/Game/BattleCity/Panzer.cpp
 	src/Resources/stb_image.h
 )
 

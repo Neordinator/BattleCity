@@ -3,3 +3,5 @@ res/textures/*
 !res/textures/map_16x16.png
 external/glm/*
 !external/glm/glm
+src/Game/ProtoGame.h
+src/Game/ProtoGame.cpp

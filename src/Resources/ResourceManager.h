@@ -24,43 +24,45 @@ namespace Renderer
 class ResourceManager
 {
 public:
+	ResourceManager() = delete;
+	~ResourceManager() = delete;
 	ResourceManager& operator=(const ResourceManager&) = delete;
 	ResourceManager& operator=(ResourceManager&) = delete;
 	ResourceManager& operator=(ResourceManager&&) = delete;
 	ResourceManager(ResourceManager&&) = delete;
 
-	ResourceManager() = default;
-	ResourceManager(const std::string&);
+	static void setExecutablePath(const std::string&);
+	static void unloadAllResources();
 
-	std::shared_ptr<Renderer::ShaderProgram> loadShaders(const std::string&, const std::string&, const std::string&);
-	std::shared_ptr<Renderer::ShaderProgram> getShader(const std::string&);
+	static std::shared_ptr<Renderer::ShaderProgram> loadShaders(const std::string&, const std::string&, const std::string&);
+	static std::shared_ptr<Renderer::ShaderProgram> getShaderProgram(const std::string&);
 
-	std::shared_ptr<Renderer::Texture2D> loadTexture(const std::string&, const std::string&);
-	std::shared_ptr<Renderer::Texture2D> getTexture(const std::string&);
+	static std::shared_ptr<Renderer::Texture2D> loadTexture(const std::string&, const std::string&);
+	static std::shared_ptr<Renderer::Texture2D> getTexture(const std::string&);
 
-	std::shared_ptr<Renderer::Sprite> loadSprite(const std::string&, const std::string&, const std::string&, const unsigned int, const unsigned int, const std::string& subTextureName = "default" );
-	std::shared_ptr<Renderer::Sprite> getSprite(const std::string&);
+	static std::shared_ptr<Renderer::Sprite> loadSprite(const std::string&, const std::string&, const std::string&, const unsigned int, const unsigned int, const std::string& subTextureName = "default" );
+	static std::shared_ptr<Renderer::Sprite> getSprite(const std::string&);
 
-	std::shared_ptr<Renderer::AnimatedSprite> loadAnimatedSprite(const std::string&, const std::string&, const std::string&, const unsigned int, const unsigned int, const std::string&);
-	std::shared_ptr<Renderer::AnimatedSprite> getAnimatedSprite(const std::string&);
+	static std::shared_ptr<Renderer::AnimatedSprite> loadAnimatedSprite(const std::string&, const std::string&, const std::string&, const unsigned int, const unsigned int, const std::string&);
+	static std::shared_ptr<Renderer::AnimatedSprite> getAnimatedSprite(const std::string&);
 
-	std::shared_ptr<Renderer::Texture2D> loadTextureAtlas(std::string, std::string, std::vector<std::string>, const unsigned int, const unsigned int);
+	static std::shared_ptr<Renderer::Texture2D> loadTextureAtlas(std::string, std::string, std::vector<std::string>, const unsigned int, const unsigned int);
 
 private:
 	typedef std::map<const std::string, std::shared_ptr<Renderer::ShaderProgram>> ShaderProgramsMap;
-	ShaderProgramsMap m_shaderPrograms;
+	static ShaderProgramsMap m_shaderPrograms;
 
 	typedef std::map<const std::string, std::shared_ptr<Renderer::Texture2D>> TexturesMap;
-	TexturesMap m_textures;
+	static TexturesMap m_textures;
 
 	typedef std::map<const std::string, std::shared_ptr<Renderer::Sprite>> SpritesMap;
-	SpritesMap m_sprites;
+	static SpritesMap m_sprites;
 
 	typedef std::map<const std::string, std::shared_ptr<Renderer::AnimatedSprite>> AnimatedSpritesMap;
-	AnimatedSpritesMap m_animatedSprites;
+	static AnimatedSpritesMap m_animatedSprites;
 
-	std::string m_path;
+	static std::string m_path;
 
 
-	std::string getFileString(const std::string&) const;
+	static std::string getFileString(const std::string&);
 };

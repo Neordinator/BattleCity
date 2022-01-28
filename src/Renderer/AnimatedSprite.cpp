@@ -38,7 +38,7 @@ namespace Renderer
 		auto it = m_statesMap.find(newState);
 		if (it == m_statesMap.end())
 		{
-			std::cerr << "Can't find animation state" << newState << std::endl;
+			std::cerr << "Can't find animation state: " << newState << std::endl;
 			return;
 		}
 		if (it != m_pCurrentAnimationDurations)
@@ -56,13 +56,10 @@ namespace Renderer
 			auto subTexture = m_pTexture->getSubTexture(m_pCurrentAnimationDurations->second[m_currentFrame].first);
 			const GLfloat textureCoords[] = {
 				// U**V
-				subTexture.leftBottomUV.x,	subTexture.leftBottomUV.y,
-				subTexture.leftBottomUV.x,	subTexture.rightTopUV.y,
-				subTexture.rightTopUV.x,	subTexture.rightTopUV.y,
-
-				subTexture.rightTopUV.x,	subTexture.rightTopUV.y,
-				subTexture.rightTopUV.x,	subTexture.leftBottomUV.y,
-				subTexture.leftBottomUV.x,	subTexture.leftBottomUV.y,
+				subTexture.leftBottomUV.x, subTexture.leftBottomUV.y,
+				subTexture.leftBottomUV.x, subTexture.rightTopUV.y,
+				subTexture.rightTopUV.x, subTexture.rightTopUV.y,
+				subTexture.rightTopUV.x, subTexture.leftBottomUV.y,
 			};
 
 			glBindBuffer(GL_ARRAY_BUFFER, m_textureCoordsVBO);
