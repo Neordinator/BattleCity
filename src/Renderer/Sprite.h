@@ -9,6 +9,9 @@
 #include "ShaderProgram.h"
 #include "Texture2D.h"
 
+#include "VertexBuffer.h"
+#include "IndexBuffer.h"
+
 namespace Renderer
 {
 	class Texture2D;
@@ -35,8 +38,9 @@ namespace Renderer
 		glm::vec2 m_size;
 		float m_rotation;
 		GLuint m_VAO;
-		GLuint m_vertexCoordsVBO;
-		GLuint m_textureCoordsVBO;
-		GLuint m_EBO;
+
+		VertexBuffer m_vertexCoordsBuffer;
+		VertexBuffer m_textureCoordsBuffer;
+		IndexBuffer m_indexBuffer;
 	};
 }

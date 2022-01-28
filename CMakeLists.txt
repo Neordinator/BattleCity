@@ -5,6 +5,10 @@ project(${PROJECT_NAME})
 
 add_executable(${PROJECT_NAME}
 	src/main.cpp
+	src/Renderer/VertexBuffer.h
+	src/Renderer/VertexBuffer.cpp
+	src/Renderer/IndexBuffer.h
+	src/Renderer/IndexBuffer.cpp
 	src/Renderer/ShaderProgram.h
 	src/Renderer/ShaderProgram.cpp
 	src/Renderer/Texture2D.h
