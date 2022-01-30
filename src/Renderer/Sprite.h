@@ -8,12 +8,13 @@
 
 #include "ShaderProgram.h"
 #include "Texture2D.h"
+#include "Renderer.h"
 
 #include "VertexArray.h"
 #include "VertexBuffer.h"
 #include "IndexBuffer.h"
 
-namespace Renderer
+namespace Render
 {
 	class Texture2D;
 	class SubTexture2D;

@@ -5,7 +5,7 @@
 
 #include "../../Renderer/AnimatedSprite.h"
 
-namespace Renderer
+namespace Render
 {
 	class AnimatedSprite;
 }
@@ -20,7 +20,7 @@ public:
 		Right
 	};
 
-	Panzer(std::shared_ptr<Renderer::AnimatedSprite> pSprite, const float velocity, const glm::vec2& position);
+	Panzer(std::shared_ptr<Render::AnimatedSprite> pSprite, const float velocity, const glm::vec2& position);
 
 	void render() const;
 	void setOrientation(const EOrientation eOrientation);
@@ -29,7 +29,7 @@ public:
 
 private:
 	EOrientation m_eOrientation;
-	std::shared_ptr<Renderer::AnimatedSprite> m_pSprite;
+	std::shared_ptr<Render::AnimatedSprite> m_pSprite;
 	bool m_move;
 	float m_velocity;
 	glm::vec2 m_position;

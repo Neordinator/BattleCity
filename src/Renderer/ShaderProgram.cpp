@@ -1,7 +1,7 @@
 # include "ShaderProgram.h"
-namespace Renderer
+namespace Render
 {
-	Renderer::ShaderProgram::ShaderProgram(const std::string& vertexShader, const std::string& fragmentShader)
+	Render::ShaderProgram::ShaderProgram(const std::string& vertexShader, const std::string& fragmentShader)
 	{
 		GLuint vertexShaderID;
 		if (!createShader(vertexShader, GL_VERTEX_SHADER, vertexShaderID))

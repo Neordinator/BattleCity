@@ -5,7 +5,7 @@
 #include <string>
 #include <map>
 
-namespace Renderer
+namespace Render
 {
 	struct SubTexture2D
 	{

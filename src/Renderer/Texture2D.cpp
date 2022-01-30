@@ -1,6 +1,6 @@
 #include "Texture2D.h"
 
-namespace Renderer
+namespace Render
 {
 
 	SubTexture2D::SubTexture2D(const glm::vec2& _leftBottomUV, const glm::vec2& _rightTopUV) : leftBottomUV(_leftBottomUV), rightTopUV(_rightTopUV) {}

@@ -7,7 +7,7 @@
 #include <string>
 #include <iostream>
 
-namespace Renderer
+namespace Render
 {
 	class ShaderProgram
 	{

@@ -1,6 +1,6 @@
 #include "VertexBufferLayout.h"
 
-namespace Renderer
+namespace Render
 {
 	VertexBufferLayoutElement::VertexBufferLayoutElement(GLint _count, GLenum _type, GLboolean _normalized, unsigned int _size)
 	{

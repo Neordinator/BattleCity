@@ -11,6 +11,7 @@
 #include <chrono>
 
 // СОБСТВЕННЫЕ
+#include "Renderer/Renderer.h"
 #include "Resources/ResourceManager.h"
 #include "Game/Game.h"
 
@@ -18,17 +19,11 @@
 glm::ivec2 g_windowSize(640, 480);
 Game gBattleCity(g_windowSize);
 
-/*int WINDOW_WIDTH = 640;
-int WINDOW_HEIGHT = 480;*/
-
 void glfwWindowSizeCallback(GLFWwindow* pWindow, int width, int height)
 {
-	/*WINDOW_WIDTH = width;
-	WINDOW_HEIGHT = height;
-	glViewport(0, 0, WINDOW_WIDTH, WINDOW_HEIGHT);*/
 	g_windowSize.x = width;
 	g_windowSize.y = height;
-	glViewport(0, 0, g_windowSize.x, g_windowSize.y);
+	Render::Renderer::setViewport(g_windowSize.x, g_windowSize.y, 0, 0);
 }
 
 void glfwKeyCallback(GLFWwindow* pWindow, int key, int scancode, int action, int mode)
@@ -96,7 +91,6 @@ int main(int argc, char** argv)
 	glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
 
 	// Create a windowed mode window and its OpenGL context
-	//GLFWwindow* pWindow = glfwCreateWindow(WINDOW_WIDTH, WINDOW_HEIGHT, "Void 0.01", nullptr, nullptr);
 	GLFWwindow* pWindow = glfwCreateWindow(g_windowSize.x, g_windowSize.y, "Void 0.01", nullptr, nullptr);
 	if (!pWindow)
 	{
@@ -115,11 +109,10 @@ int main(int argc, char** argv)
 	{
 		std::cout << "Can not load GLAD!" << std::endl;
 	}
-	std::cout << "Render: " << glGetString(GL_RENDERER) << std::endl;
-	std::cout << "OpenGL version: " << glGetString(GL_VERSION) << std::endl;
-	//std::cout << "OpenGL " << GLVersion.major << "." << GLVersion.minor << std::endl;
+	std::cout << "Render: " << Render::Renderer::getRendererStr() << std::endl;
+	std::cout << "OpenGL version: " << Render::Renderer::getVersionStr() << std::endl;
 
-	glClearColor(0, 0, 0, 1);
+	Render::Renderer::setClearColor(0, 0, 0, 1);
 
 	{
 		ResourceManager::setExecutablePath(argv[0]);
@@ -130,6 +123,9 @@ int main(int argc, char** argv)
 		// Loop until the user closes the window
 		while (!glfwWindowShouldClose(pWindow))
 		{
+			// Poll for and process events
+			glfwPollEvents();
+
 			auto currentTime = std::chrono::high_resolution_clock::now();
 			uint64_t duration = std::chrono::duration_cast<std::chrono::nanoseconds>(currentTime - lastTime).count();
 			lastTime = currentTime;
@@ -137,7 +133,7 @@ int main(int argc, char** argv)
 			//pAnimeGirlAnimatedSprite->update(duration);
 			gBattleCity.update(duration);
 			// Render here
-			glClear(GL_COLOR_BUFFER_BIT);
+			Render::Renderer::clear();
 
 			//pDefaultShaderProgram->use();
 			//glBindVertexArray(vao);
@@ -155,9 +151,6 @@ int main(int argc, char** argv)
 
 			// Swap front and back buffers
 			glfwSwapBuffers(pWindow);
-
-			// Poll for and process events
-			glfwPollEvents();
 		}
 		ResourceManager::unloadAllResources();
 	}//область видимости для вызова деструктора ResourceManager перед уничтожением контекста OpenGL

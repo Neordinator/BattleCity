@@ -18,7 +18,7 @@ public:
 	bool init();
 
 	unsigned int stateSwitcher{ 0 };
-	std::shared_ptr<Renderer::AnimatedSprite> pAnimeGirlAnimatedSprite;
+	std::shared_ptr<Render::AnimatedSprite> pAnimeGirlAnimatedSprite;
 
 private:
 	std::array<bool, 349> m_keys;
