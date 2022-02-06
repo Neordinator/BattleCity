@@ -10,11 +10,11 @@ namespace Render
 {
 	class Sprite;
 }
-class BrickWall : public IGameObject
+class BetonWall : public IGameObject
 {
 public:
 
-	enum class EBrickWallType
+	enum class EBetonWallType
 	{
 		All,
 		Top,
@@ -26,26 +26,12 @@ public:
 		BottomLeft,
 		BottomRight
 	};
-	enum class EBrickState
+	enum class EBlockState
 	{
-		All = 0,
-		TopLeft,
-		TopRight,
-		Top,
-		BottomLeft,
-		Left,
-		TopRight_BottomLeft,
-		Top_BottomLeft,
-		BottomRight,
-		TopLeft_BottomRight,
-		Right,
-		Top_BottomRight,
-		Bottom,
-		TopLeft_Bottom,
-		TopRight_Bottom,
+		Enabled = 0,
 		Destroyed
 	};
-	enum class EBrickLocation
+	enum class EBetonLocation
 	{
 		TopLeft,
 		TopRight,
@@ -55,7 +41,7 @@ public:
 
 	/*template<typename Other, typename Target>
 	BrickWall(std::shared_ptr<Other> const& other, Target* p);*/
-	BrickWall(const EBrickWallType, const glm::vec2&, const glm::vec2&, const float);
+	BetonWall(const EBetonWallType, const glm::vec2&, const glm::vec2&, const float);
 
 	//std::shared_ptr<BrickWall> operator=(BrickWall*);
 
@@ -63,9 +49,9 @@ public:
 	virtual void update(const uint64_t delta) override;
 
 private:
-	void renderBrick(const EBrickLocation) const;
+	void renderBlock(const EBetonLocation) const;
 
-	std::array<EBrickState, 4> m_pCurrentBrickState;
-	std::array<std::shared_ptr<Render::Sprite>, 15> m_sprites;
+	std::array<EBlockState, 4> m_pCurrentBlockState;
+	std::shared_ptr<Render::Sprite> m_sprite;
 	std::array<glm::vec2, 4> m_blockOffsets;
 };

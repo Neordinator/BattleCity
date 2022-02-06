@@ -9,54 +9,42 @@ std::shared_ptr<IGameObject> createGameObjectFromDescription(const char descript
 	switch (description)
 	{
 	case '0':
-		//return std::make_shared<BrickWall>(BrickWall::EBrickWallType::Right, position, size, rotation);
-		enumeration = BrickWall::EBrickWallType::Right;
-		break;
+		return std::make_shared<BrickWall>(BrickWall::EBrickWallType::Right, position, size, rotation);
 	case '1':
-		//return std::make_shared<BrickWall>(BrickWall::EBrickWallType::Bottom, position, size, rotation);
-		enumeration = BrickWall::EBrickWallType::Bottom;
-		break;
+		return std::make_shared<BrickWall>(BrickWall::EBrickWallType::Bottom, position, size, rotation);
 	case '2':
-		//return std::make_shared<BrickWall>(BrickWall::EBrickWallType::Left, position, size, rotation);
-		enumeration = BrickWall::EBrickWallType::Left;
-		break;
+		return std::make_shared<BrickWall>(BrickWall::EBrickWallType::Left, position, size, rotation);
 	case '3':
-		//return std::make_shared<BrickWall>(BrickWall::EBrickWallType::Top, position, size, rotation);
-		enumeration = BrickWall::EBrickWallType::Top;
-		break;
+		return std::make_shared<BrickWall>(BrickWall::EBrickWallType::Top, position, size, rotation);
 	case '4':
-		//return std::make_shared<BrickWall>(BrickWall::EBrickWallType::All, position, size, rotation);
-		enumeration = BrickWall::EBrickWallType::All;
-		break;
-	case '9':
-		//return std::make_shared<BrickWall>(BrickWall::EBrickWallType::All, position, size, rotation);//вместо All тут должен быть вообще Beton Wall
-		enumeration = BrickWall::EBrickWallType::All;
-		break;
+		return std::make_shared<BrickWall>(BrickWall::EBrickWallType::All, position, size, rotation);
 	case 'G':
-		//return std::make_shared<BrickWall>(BrickWall::EBrickWallType::BottomLeft, position, size, rotation);
-		enumeration = BrickWall::EBrickWallType::BottomLeft;
-		break;
+		return std::make_shared<BrickWall>(BrickWall::EBrickWallType::BottomLeft, position, size, rotation);
 	case 'H':
-		//return std::make_shared<BrickWall>(BrickWall::EBrickWallType::BottomRight, position, size, rotation);
-		enumeration = BrickWall::EBrickWallType::BottomRight;
-		break;
+		return std::make_shared<BrickWall>(BrickWall::EBrickWallType::BottomRight, position, size, rotation);
 	case 'I':
-		//return std::make_shared<BrickWall>(BrickWall::EBrickWallType::TopLeft, position, size, rotation);
-		enumeration = BrickWall::EBrickWallType::TopLeft;
-		break;
+		return std::make_shared<BrickWall>(BrickWall::EBrickWallType::TopLeft, position, size, rotation);
 	case 'J':
-		//return std::make_shared<BrickWall>(BrickWall::EBrickWallType::TopRight, position, size, rotation);
-		enumeration = BrickWall::EBrickWallType::TopRight;
-		break;
+		return std::make_shared<BrickWall>(BrickWall::EBrickWallType::TopRight, position, size, rotation);
+
+	case '5':
+		return std::make_shared<BetonWall>(BetonWall::EBetonWallType::Right, position, size, rotation);
+	case '6':
+		return std::make_shared<BetonWall>(BetonWall::EBetonWallType::Bottom, position, size, rotation);
+	case '7':
+		return std::make_shared<BetonWall>(BetonWall::EBetonWallType::Left, position, size, rotation);
+	case '8':
+		return std::make_shared<BetonWall>(BetonWall::EBetonWallType::Top, position, size, rotation);
+	case '9':
+		return std::make_shared<BetonWall>(BetonWall::EBetonWallType::All, position, size, rotation);
+
 	case 'D':
 		return nullptr;
 	default:
 		std::cerr << "Unknown GameObject description: " << description << std::endl;
-		//break;
-		return nullptr;
+		break;
 	}
-	return std::make_shared<BrickWall>(enumeration, position, size, rotation);
-	//return nullptr;
+	return nullptr;
 }
 
 Level::Level(const std::vector<std::string>& levelDescription)

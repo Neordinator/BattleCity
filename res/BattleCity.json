@@ -41,6 +41,47 @@
       ]
     },
     {
+      "atlasName": "mapTextureAtlas_16x16",
+      "filePath": "res/textures/map_16x16.png",
+      "subTextureWidth": 16,
+      "subTextureHeight": 16,
+      "subTextures": [
+        "eagle",
+        "eagle_dead",
+        "respawn1",
+        "respawn2",
+        "respawn3",
+        "respawn4",
+        "shield1",
+        "shield2",
+        "bigExplosion1_top_left",
+        "bigExplosion1_top_right",
+        "bigExplosion2_top_left",
+        "bigExplosion2_top_right",
+        "explosion1",
+        "explosion2",
+        "explosion3",
+
+        "reserved1",
+        "bigExplosion1_bottom_left",
+        "bigExplosion1_bottom_right",
+        "bigExplosion2_bottom_left",
+        "bigExplosion2_bottom_right",
+        "reserved2",
+        "reserved3",
+        "reserved4",
+        "reserved5",
+        "bonus_helmet",
+        "bonus_clock",
+        "bonus_shovel",
+        "bonus_star",
+        "bonus_grenade",
+        "bonus_tank",
+        "bonus_gun",
+        "reserved6"
+      ]
+    },
+    {
       "atlasName": "panzersTextureAtlas",
       "filePath": "res/textures/panzersTextureAtlas.png",
       "subTextureWidth": 16,
@@ -412,6 +453,108 @@
       "initialSubTexture": "brickWall_topRight_bottom"
     },
     {
+      "name": "betonWall",
+      "textureAtlas": "mapTextureAtlas_8x8",
+      "shader": "spriteShader",
+      "initialSubTexture": "betonWall"
+    },
+    {
+      "name": "trees",
+      "textureAtlas": "mapTextureAtlas_8x8",
+      "shader": "spriteShader",
+      "initialSubTexture": "trees"
+    },
+    {
+      "name": "ice",
+      "textureAtlas": "mapTextureAtlas_8x8",
+      "shader": "spriteShader",
+      "initialSubTexture": "ice"
+    },
+    {
+      "name": "wall",
+      "textureAtlas": "mapTextureAtlas_8x8",
+      "shader": "spriteShader",
+      "initialSubTexture": "wall"
+    },
+    {
+      "name": "bullet",
+      "textureAtlas": "mapTextureAtlas_8x8",
+      "shader": "spriteShader",
+      "initialSubTexture": "bullet"
+    },
+    {
+      "name": "eagle",
+      "textureAtlas": "mapTextureAtlas_16x16",
+      "shader": "spriteShader",
+      "initialSubTexture": "eagle",
+      "frames": [
+        {
+          "subTexture": "eagle",
+          "duration": 50000000
+        },
+        {
+          "subTexture": "eagle_dead",
+          "duration": 50000000
+        }
+      ]
+    },
+    {
+      "name": "respawn",
+      "textureAtlas": "mapTextureAtlas_16x16",
+      "shader": "spriteShader",
+      "initialSubTexture": "respawn1",
+      "frames": [
+        {
+          "subTexture": "respawn1",
+          "duration": 50000000
+        },
+        {
+          "subTexture": "respawn2",
+          "duration": 50000000
+        },
+        {
+          "subTexture": "respawn3",
+          "duration": 50000000
+        },
+        {
+          "subTexture": "respawn4",
+          "duration": 50000000
+        }
+      ]
+    },
+    {
+      "name": "shield",
+      "textureAtlas": "mapTextureAtlas_16x16",
+      "shader": "spriteShader",
+      "initialSubTexture": "shield1",
+      "frames": [
+        {
+          "subTexture": "shield1",
+          "duration": 50000000
+        },
+        {
+          "subTexture": "shield2",
+          "duration": 50000000
+        }
+      ]
+    },
+    {
+      "name": "explosion",
+      "textureAtlas": "mapTextureAtlas_16x16",
+      "shader": "spriteShader",
+      "initialSubTexture": "explosion1",
+      "frames": [
+        {
+          "subTexture": "explosion1",
+          "duration": 50000000
+        },
+        {
+          "subTexture": "explosion2",
+          "duration": 50000000
+        }
+      ]
+    },
+    {
       "name": "yellowPanzer1_top",
       "textureAtlas": "panzersTextureAtlas",
       "shader": "spriteShader",
@@ -471,6 +614,26 @@
         },
         {
           "subTexture": "yellowPanzer1Right2",
+          "duration": 50000000
+        }
+      ]
+    },
+    {
+      "name": "water",
+      "textureAtlas": "mapTextureAtlas_8x8",
+      "shader": "spriteShader",
+      "initialSubTexture": "water1",
+      "frames": [
+        {
+          "subTexture": "water1",
+          "duration": 50000000
+        },
+        {
+          "subTexture": "water2",
+          "duration": 50000000
+        },
+        {
+          "subTexture": "water3",
           "duration": 50000000
         }
       ]

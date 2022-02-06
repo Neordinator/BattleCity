@@ -8,6 +8,7 @@
 #include <glm/vec2.hpp>
 
 #include "BattleCity/BrickWall.h"
+#include "BattleCity/BetonWall.h"
 #include "IGameObject.h"
 
 class IGameObject;

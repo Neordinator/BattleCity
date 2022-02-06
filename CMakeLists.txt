@@ -35,6 +35,8 @@ add_executable(${PROJECT_NAME}
 	src/Game/BattleCity/Panzer.cpp
 	src/Game/BattleCity/BrickWall.h
 	src/Game/BattleCity/BrickWall.cpp
+	src/Game/BattleCity/BetonWall.h
+	src/Game/BattleCity/BetonWall.cpp
 	src/Resources/stb_image.h
 )
 
