@@ -92,7 +92,7 @@ bool Game::init()
 
 	m_pPanzer = std::make_unique<Panzer>(0.0000001f, glm::vec2(0), glm::vec2(16.f, 16.f));
 
-	m_pLevel = std::make_unique <Level>(ResourceManager::getLevels()[0]);
+	m_pLevel = std::make_unique <Level>(ResourceManager::getLevels()[1]);
 
 	return true;
 }

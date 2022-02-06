@@ -9,6 +9,10 @@
 
 #include "BattleCity/BrickWall.h"
 #include "BattleCity/BetonWall.h"
+#include "BattleCity/Water.h"
+#include "BattleCity/Trees.h"
+#include "BattleCity/Eagle.h"
+#include "BattleCity/Ice.h"
 #include "IGameObject.h"
 
 class IGameObject;

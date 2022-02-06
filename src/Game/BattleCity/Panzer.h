@@ -14,7 +14,7 @@ namespace Render
 class Panzer : public IGameObject
 {
 public:
-	enum class EOrientation
+	enum class EOrientation : uint8_t
 	{
 		Top,
 		Bottom,

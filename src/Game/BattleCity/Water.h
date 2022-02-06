@@ -5,32 +5,16 @@
 
 #include "../IGameObject.h"
 #include "../../Renderer/Sprite.h"
+#include "../../src/Renderer/SpriteAnimator.h"
 
 namespace Render
 {
 	class Sprite;
 }
-class BetonWall : public IGameObject
+class Water : public IGameObject
 {
 public:
 
-	enum class EBetonWallType : uint8_t
-	{
-		All,
-		Top,
-		Bottom,
-		Left,
-		Right,
-		TopLeft,
-		TopRight,
-		BottomLeft,
-		BottomRight
-	};
-	enum class EBlockState : uint8_t
-	{
-		Enabled = 0,
-		Destroyed
-	};
 	enum class EBlockLocation : uint8_t
 	{
 		TopLeft,
@@ -41,17 +25,17 @@ public:
 
 	/*template<typename Other, typename Target>
 	BrickWall(std::shared_ptr<Other> const& other, Target* p);*/
-	BetonWall(const EBetonWallType, const glm::vec2&, const glm::vec2&, const float);
+	Water(const glm::vec2&, const glm::vec2&, const float);
 
 	//std::shared_ptr<BrickWall> operator=(BrickWall*);
 
 	virtual void render() const override;
-	virtual void update(const uint64_t delta) override;
+	void update(const uint64_t) override;
 
 private:
 	void renderBlock(const EBlockLocation) const;
 
-	std::array<EBlockState, 4> m_pCurrentBlockState;
 	std::shared_ptr<Render::Sprite> m_sprite;
+	Render::SpriteAnimator m_spriteAnimator;
 	std::array<glm::vec2, 4> m_blockOffsets;
 };
