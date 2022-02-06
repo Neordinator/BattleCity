@@ -5,6 +5,10 @@
 
 #include "../Resources/ResourceManager.h"
 #include "../Game/BattleCity/Panzer.h"
+#include "Level.h"
+
+class Panzer;
+class Level;
 
 class Game
 {
@@ -18,7 +22,6 @@ public:
 	bool init();
 
 	unsigned int stateSwitcher{ 0 };
-	std::shared_ptr<Render::AnimatedSprite> pAnimeGirlAnimatedSprite;
 
 private:
 	std::array<bool, 349> m_keys;
@@ -32,4 +35,5 @@ private:
 	glm::ivec2 m_windowSize;
 	EGameState m_eCurrentGameState;
 	std::unique_ptr<Panzer> m_pPanzer;
+	std::unique_ptr<Level> m_pLevel;
 };

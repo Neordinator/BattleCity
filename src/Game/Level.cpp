@@ -1,0 +1,105 @@
+#include "Level.h"
+
+
+const unsigned int BLOCK_SIZE = 16;
+
+std::shared_ptr<IGameObject> createGameObjectFromDescription(const char description, const glm::vec2& position, const glm::vec2& size, const float rotation)
+{
+	BrickWall::EBrickWallType enumeration;
+	switch (description)
+	{
+	case '0':
+		//return std::make_shared<BrickWall>(BrickWall::EBrickWallType::Right, position, size, rotation);
+		enumeration = BrickWall::EBrickWallType::Right;
+		break;
+	case '1':
+		//return std::make_shared<BrickWall>(BrickWall::EBrickWallType::Bottom, position, size, rotation);
+		enumeration = BrickWall::EBrickWallType::Bottom;
+		break;
+	case '2':
+		//return std::make_shared<BrickWall>(BrickWall::EBrickWallType::Left, position, size, rotation);
+		enumeration = BrickWall::EBrickWallType::Left;
+		break;
+	case '3':
+		//return std::make_shared<BrickWall>(BrickWall::EBrickWallType::Top, position, size, rotation);
+		enumeration = BrickWall::EBrickWallType::Top;
+		break;
+	case '4':
+		//return std::make_shared<BrickWall>(BrickWall::EBrickWallType::All, position, size, rotation);
+		enumeration = BrickWall::EBrickWallType::All;
+		break;
+	case '9':
+		//return std::make_shared<BrickWall>(BrickWall::EBrickWallType::All, position, size, rotation);//вместо All тут должен быть вообще Beton Wall
+		enumeration = BrickWall::EBrickWallType::All;
+		break;
+	case 'G':
+		//return std::make_shared<BrickWall>(BrickWall::EBrickWallType::BottomLeft, position, size, rotation);
+		enumeration = BrickWall::EBrickWallType::BottomLeft;
+		break;
+	case 'H':
+		//return std::make_shared<BrickWall>(BrickWall::EBrickWallType::BottomRight, position, size, rotation);
+		enumeration = BrickWall::EBrickWallType::BottomRight;
+		break;
+	case 'I':
+		//return std::make_shared<BrickWall>(BrickWall::EBrickWallType::TopLeft, position, size, rotation);
+		enumeration = BrickWall::EBrickWallType::TopLeft;
+		break;
+	case 'J':
+		//return std::make_shared<BrickWall>(BrickWall::EBrickWallType::TopRight, position, size, rotation);
+		enumeration = BrickWall::EBrickWallType::TopRight;
+		break;
+	case 'D':
+		return nullptr;
+	default:
+		std::cerr << "Unknown GameObject description: " << description << std::endl;
+		//break;
+		return nullptr;
+	}
+	return std::make_shared<BrickWall>(enumeration, position, size, rotation);
+	//return nullptr;
+}
+
+Level::Level(const std::vector<std::string>& levelDescription)
+{
+	if (levelDescription.empty())
+	{
+		std::cerr << "Empty level description" << std::endl;
+	}
+	m_width = levelDescription[0].length();
+	m_height = levelDescription.size();
+
+	m_mapObjects.reserve(m_width * m_height);
+	unsigned int currentBottomOffset = BLOCK_SIZE * (m_height - 1);
+	for (const std::string& currentRow : levelDescription)
+	{
+		unsigned int currentLeftOffset = 0;
+		for (const char currentElement : currentRow)
+		{
+			m_mapObjects.emplace_back(createGameObjectFromDescription(currentElement, glm::vec2(currentLeftOffset, currentBottomOffset), glm::vec2(BLOCK_SIZE, BLOCK_SIZE), 0.f));
+			currentLeftOffset += BLOCK_SIZE;
+		}
+		currentBottomOffset -= BLOCK_SIZE;
+	}
+}
+
+void Level::render() const
+{
+	for (const auto& currentMapObject : m_mapObjects)
+	{
+		if (currentMapObject)
+		{
+			currentMapObject->render();
+		}
+	}
+}
+
+void Level::update(const uint64_t delta)
+{
+	for (const auto& currentMapObject : m_mapObjects)
+	{
+		if (currentMapObject)
+		{
+			currentMapObject->update(delta);
+		}
+	}
+}

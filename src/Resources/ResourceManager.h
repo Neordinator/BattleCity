@@ -14,14 +14,12 @@
 #include "../Renderer/ShaderProgram.h"
 #include "../Renderer/Texture2D.h"
 #include "../Renderer/Sprite.h"
-#include "../Renderer/AnimatedSprite.h"
 
 namespace Render
 {
 	class ShaderProgram;
 	class Texture2D;
 	class Sprite;
-	class AnimatedSprite;
 }
 
 class ResourceManager
@@ -43,15 +41,14 @@ public:
 	static std::shared_ptr<Render::Texture2D> loadTexture(const std::string&, const std::string&);
 	static std::shared_ptr<Render::Texture2D> getTexture(const std::string&);
 
-	static std::shared_ptr<Render::Sprite> loadSprite(const std::string&, const std::string&, const std::string&, const unsigned int, const unsigned int, const std::string&);
+	static std::shared_ptr<Render::Sprite> loadSprite(const std::string&, const std::string&, const std::string&, const std::string&);
 	static std::shared_ptr<Render::Sprite> getSprite(const std::string&);
-
-	static std::shared_ptr<Render::AnimatedSprite> loadAnimatedSprite(const std::string&, const std::string&, const std::string&, const unsigned int, const unsigned int, const std::string&);
-	static std::shared_ptr<Render::AnimatedSprite> getAnimatedSprite(const std::string&);
 
 	static std::shared_ptr<Render::Texture2D> loadTextureAtlas(std::string, std::string, std::vector<std::string>, const unsigned int, const unsigned int);
 
 	static bool loadJSONResources(const std::string& JSONPath);
+
+	static const std::vector<std::vector<std::string>>& getLevels();
 
 private:
 	typedef std::map<const std::string, std::shared_ptr<Render::ShaderProgram>> ShaderProgramsMap;
@@ -63,8 +60,7 @@ private:
 	typedef std::map<const std::string, std::shared_ptr<Render::Sprite>> SpritesMap;
 	static SpritesMap m_sprites;
 
-	typedef std::map<const std::string, std::shared_ptr<Render::AnimatedSprite>> AnimatedSpritesMap;
-	static AnimatedSpritesMap m_animatedSprites;
+	static std::vector<std::vector<std::string>> m_levels;
 
 	static std::string m_path;
 

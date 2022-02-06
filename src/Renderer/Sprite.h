@@ -19,30 +19,42 @@ namespace Render
 	class Texture2D;
 	class SubTexture2D;
 
+	struct FrameDescription
+	{
+		FrameDescription(const glm::vec2 _leftBottomUV, glm::vec2 _rightTopUV, uint64_t _duration)
+			: leftBottomUV(_leftBottomUV), rightTopUV(_rightTopUV), duration(_duration)
+		{}
+
+		glm::vec2 leftBottomUV;
+		glm::vec2 rightTopUV;
+		uint64_t duration;
+	};
+
 	class Sprite
 	{
 	public:
 		Sprite(const Sprite&) = delete;
 		Sprite& operator=(const Sprite&) = delete;
 
-		Sprite(std::shared_ptr<Texture2D>, std::string, std::shared_ptr<ShaderProgram>, const glm::vec2&, const glm::vec2&, const float);
+		Sprite(std::shared_ptr<Texture2D>, std::string, std::shared_ptr<ShaderProgram>);
 		~Sprite();
 
-		virtual void render() const;
-		void setPosition(const glm::vec2&);
-		void setSize(const glm::vec2&);
-		void setRotation(const float);
+		void render(const glm::vec2&, const glm::vec2&, const float, const size_t frameId = 0) const;
+
+		void insertFrames(std::vector<FrameDescription>);
+		uint64_t getFrameDuration(const size_t frameId) const;
+		size_t getFramesCount() const;
 
 	protected:
 		std::shared_ptr<Texture2D> m_pTexture;
 		std::shared_ptr<ShaderProgram> m_pShaderProgram;
-		glm::vec2 m_position;
-		glm::vec2 m_size;
-		float m_rotation;
 
 		VertexArray m_vertexArray;
 		VertexBuffer m_vertexCoordsBuffer;
 		VertexBuffer m_textureCoordsBuffer;
 		IndexBuffer m_indexBuffer;
+
+		std::vector<FrameDescription> m_framesDescriptions;
+		mutable size_t m_lastFrameId;
 	};
 }

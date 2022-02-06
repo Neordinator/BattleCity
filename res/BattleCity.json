@@ -1,58 +1,48 @@
 {
-  "shaders" : [
+  "shaders": [
     {
-      "shaderName" : "spriteShader",
-      "filePath_v" : "res/shaders/vSprite.txt",
-      "filePath_f" : "res/shaders/fSprite.txt"
+      "shaderName": "spriteShader",
+      "filePath_v": "res/shaders/vSprite.txt",
+      "filePath_f": "res/shaders/fSprite.txt"
     }
   ],
   "textureAtlases": [
     {
-      "atlasName": "battleCityTextureAtlas",
-      "filePath": "res/textures/battleCityTextureAtlas.png",
-      "width": 128,
-      "height": 112,
-      "subTextureWidth": 16,
-      "subTextureHeight": 16,
+      "atlasName": "mapTextureAtlas_8x8",
+      "filePath": "res/textures/map_8x8.png",
+      "subTextureWidth": 8,
+      "subTextureHeight": 8,
       "subTextures": [
-        "block",
-        "topBlock",
-        "bottomBlock",
-        "leftBlock",
-        "rightBlock",
-        "topLeftBlock",
-        "topRightBlock",
-        "bottomLeftBlock",
-        "bottomRightBlock",
-        "beton",
-        "topBeton",
-        "bottomBeton",
-        "leftBeton",
-        "rightBeton",
-        "topLeftBeton",
-        "topRightBeton",
-        "bottomLeftBeton",
-        "bottomRightBeton",
+        "brickWall_all",
+        "brickWall_topLeft",
+        "brickWall_topRight",
+        "brickWall_top",
+        "brickWall_bottomLeft",
+        "brickWall_left",
+        "brickWall_topRight_bottomLeft",
+        "brickWall_top_bottomLeft",
+        "brickWall_bottomRight",
+        "brickWall_topLeft_bottomRight",
+        "brickWall_right",
+        "brickWall_top_bottomRight",
+        "brickWall_bottom",
+        "brickWall_topLeft_bottom",
+        "brickWall_topRight_bottom",
+
         "water1",
         "water2",
         "water3",
+        "betonWall",
         "trees",
         "ice",
         "wall",
-        "eagle",
-        "deadEagle",
-        "nothing",
-        "respawn1",
-        "respawn2",
-        "respawn3",
-        "respawn4"
+        "bullet",
+        "nothing"
       ]
     },
     {
       "atlasName": "panzersTextureAtlas",
       "filePath": "res/textures/panzersTextureAtlas.png",
-      "width": 256,
-      "height": 256,
       "subTextureWidth": 16,
       "subTextureHeight": 16,
       "subTextures": [
@@ -330,67 +320,180 @@
       ]
     }
   ],
-  "animatedSprites": [
+  "sprites": [
     {
-      "name": "yellowPanzer1AnimatedSprite",
+      "name": "brickWall_all",
+      "textureAtlas": "mapTextureAtlas_8x8",
+      "shader": "spriteShader",
+      "initialSubTexture": "brickWall_all"
+    },
+    {
+      "name": "brickWall_topLeft",
+      "textureAtlas": "mapTextureAtlas_8x8",
+      "shader": "spriteShader",
+      "initialSubTexture": "brickWall_topLeft"
+    },
+    {
+      "name": "brickWall_topRight",
+      "textureAtlas": "mapTextureAtlas_8x8",
+      "shader": "spriteShader",
+      "initialSubTexture": "brickWall_topRight"
+    },
+    {
+      "name": "brickWall_top",
+      "textureAtlas": "mapTextureAtlas_8x8",
+      "shader": "spriteShader",
+      "initialSubTexture": "brickWall_top"
+    },
+    {
+      "name": "brickWall_bottomLeft",
+      "textureAtlas": "mapTextureAtlas_8x8",
+      "shader": "spriteShader",
+      "initialSubTexture": "brickWall_bottomLeft"
+    },
+    {
+      "name": "brickWall_left",
+      "textureAtlas": "mapTextureAtlas_8x8",
+      "shader": "spriteShader",
+      "initialSubTexture": "brickWall_left"
+    },
+    {
+      "name": "brickWall_topRight_bottomLeft",
+      "textureAtlas": "mapTextureAtlas_8x8",
+      "shader": "spriteShader",
+      "initialSubTexture": "brickWall_topRight_bottomLeft"
+    },
+    {
+      "name": "brickWall_top_bottomLeft",
+      "textureAtlas": "mapTextureAtlas_8x8",
+      "shader": "spriteShader",
+      "initialSubTexture": "brickWall_top_bottomLeft"
+    },
+    {
+      "name": "brickWall_bottomRight",
+      "textureAtlas": "mapTextureAtlas_8x8",
+      "shader": "spriteShader",
+      "initialSubTexture": "brickWall_bottomRight"
+    },
+    {
+      "name": "brickWall_topLeft_bottomRight",
+      "textureAtlas": "mapTextureAtlas_8x8",
+      "shader": "spriteShader",
+      "initialSubTexture": "brickWall_topLeft_bottomRight"
+    },
+    {
+      "name": "brickWall_right",
+      "textureAtlas": "mapTextureAtlas_8x8",
+      "shader": "spriteShader",
+      "initialSubTexture": "brickWall_right"
+    },
+    {
+      "name": "brickWall_top_bottomRight",
+      "textureAtlas": "mapTextureAtlas_8x8",
+      "shader": "spriteShader",
+      "initialSubTexture": "brickWall_top_bottomRight"
+    },
+    {
+      "name": "brickWall_bottom",
+      "textureAtlas": "mapTextureAtlas_8x8",
+      "shader": "spriteShader",
+      "initialSubTexture": "brickWall_bottom"
+    },
+    {
+      "name": "brickWall_topLeft_bottom",
+      "textureAtlas": "mapTextureAtlas_8x8",
+      "shader": "spriteShader",
+      "initialSubTexture": "brickWall_topLeft_bottom"
+    },
+    {
+      "name": "brickWall_topRight_bottom",
+      "textureAtlas": "mapTextureAtlas_8x8",
+      "shader": "spriteShader",
+      "initialSubTexture": "brickWall_topRight_bottom"
+    },
+    {
+      "name": "yellowPanzer1_top",
       "textureAtlas": "panzersTextureAtlas",
       "shader": "spriteShader",
-      "initialWidth": 100,
-      "initialHeight": 100,
       "initialSubTexture": "yellowPanzer1Top1",
-      "states": [
+      "frames": [
         {
-          "stateName": "panzerTopState",
-          "frames": [
-            {
-              "subTexture": "yellowPanzer1Top1",
-              "duration": 50000000
-            },
-            {
-              "subTexture": "yellowPanzer1Top2",
-              "duration": 50000000
-            }
-          ]
+          "subTexture": "yellowPanzer1Top1",
+          "duration": 50000000
         },
         {
-          "stateName": "panzerLeftState",
-          "frames": [
-            {
-              "subTexture": "yellowPanzer1Left1",
-              "duration": 50000000
-            },
-            {
-              "subTexture": "yellowPanzer1Left2",
-              "duration": 50000000
-            }
-          ]
-        },
-        {
-          "stateName": "panzerBottomState",
-          "frames": [
-            {
-              "subTexture": "yellowPanzer1Bottom1",
-              "duration": 50000000
-            },
-            {
-              "subTexture": "yellowPanzer1Bottom2",
-              "duration": 50000000
-            }
-          ]
-        },
-        {
-          "stateName": "panzerRightState",
-          "frames": [
-            {
-              "subTexture": "yellowPanzer1Right1",
-              "duration": 50000000
-            },
-            {
-              "subTexture": "yellowPanzer1Right2",
-              "duration": 50000000
-            }
-          ]
+          "subTexture": "yellowPanzer1Top2",
+          "duration": 50000000
         }
+      ]
+    },
+    {
+      "name": "yellowPanzer1_left",
+      "textureAtlas": "panzersTextureAtlas",
+      "shader": "spriteShader",
+      "initialSubTexture": "yellowPanzer1Left1",
+      "frames": [
+        {
+          "subTexture": "yellowPanzer1Left1",
+          "duration": 50000000
+        },
+        {
+          "subTexture": "yellowPanzer1Left2",
+          "duration": 50000000
+        }
+      ]
+    },
+    {
+      "name": "yellowPanzer1_bottom",
+      "textureAtlas": "panzersTextureAtlas",
+      "shader": "spriteShader",
+      "initialSubTexture": "yellowPanzer1Bottom1",
+      "frames": [
+        {
+          "subTexture": "yellowPanzer1Bottom1",
+          "duration": 50000000
+        },
+        {
+          "subTexture": "yellowPanzer1Bottom2",
+          "duration": 50000000
+        }
+      ]
+    },
+    {
+      "name": "yellowPanzer1_right",
+      "textureAtlas": "panzersTextureAtlas",
+      "shader": "spriteShader",
+      "initialSubTexture": "yellowPanzer1Right1",
+      "frames": [
+        {
+          "subTexture": "yellowPanzer1Right1",
+          "duration": 50000000
+        },
+        {
+          "subTexture": "yellowPanzer1Right2",
+          "duration": 50000000
+        }
+      ]
+    }
+  ],
+
+  "levels": [
+    {
+      "description": [
+        "DDDDDDDDDDDDD",
+        "D1D1D1D1D1D1D",
+        "D4D4D4D4D4D4D",
+        "D4D4D4D4D4D4D",
+        "D4D4D494D4D4D",
+        "D4D4D3D3D4D4D",
+        "D3D3D1D1D3D3D",
+        "1D11D3D3D11D1",
+        "8D33D1D1D33D8",
+        "D1D1D444D1D1D",
+        "D4D4D4D4D4D4D",
+        "D4D4D3D3D4D4D",
+        "D4D4DH1GDDDDD",
+        "DDDDD0E2DDDDD"
       ]
     }
   ]

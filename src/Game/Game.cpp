@@ -16,17 +16,22 @@ Game::~Game()
 
 void Game::render()
 {
-	//pAnimeGirlAnimatedSprite->render();
 	if (m_pPanzer)
 	{
 		m_pPanzer->render();
+	}
+	if (m_pLevel)
+	{
+		m_pLevel->render();
 	}
 }
 
 void Game::update(const uint64_t delta)
 {
-	//ResourceManager::getAnimatedSprite("AnimeGirlAnimatedSprite")->update(delta);
-	//pAnimeGirlAnimatedSprite->update(delta);
+	if (m_pLevel)
+	{
+		m_pLevel->update(delta);
+	}
 	if (m_pPanzer)
 	{
 		if (m_keys[GLFW_KEY_W])
@@ -73,20 +78,6 @@ bool Game::init()
 		return false;
 	}
 
-	auto pTextureAtlas = ResourceManager::getTexture("battleCityTextureAtlas");
-	if (!pTextureAtlas)
-	{
-		std::cerr << "Can't find texture atlas: " << "battleCityTextureAtlas" << std::endl;
-		return false;
-	}
-
-	auto pPanzerTextureAtlas = ResourceManager::getTexture("panzersTextureAtlas");
-	if (!pPanzerTextureAtlas)
-	{
-		std::cerr << "Can't find texture atlas: " << "panzersTextureAtlas" << std::endl;
-		return false;
-	}
-
 	/*glm::mat4 modelMatrix_1 = glm::mat4(1.f);
 	modelMatrix_1 = glm::translate(modelMatrix_1, glm::vec3(100.f, 50.0f, 0.0f));
 
@@ -99,12 +90,9 @@ bool Game::init()
 	pSpriteShaderProgram->setInt("tex", 0);
 	pSpriteShaderProgram->setMatrix4("projectionMat", projectionMatrix);
 
-	auto pPanzerAnimatedSprite = ResourceManager::getAnimatedSprite("yellowPanzer1AnimatedSprite");
-	if (!pPanzerAnimatedSprite)
-	{
-		return false;
-	}
-	m_pPanzer = std::make_unique<Panzer>(pPanzerAnimatedSprite, 0.0000001f, glm::vec2(100.f, 100.f));
+	m_pPanzer = std::make_unique<Panzer>(0.0000001f, glm::vec2(0), glm::vec2(16.f, 16.f));
+
+	m_pLevel = std::make_unique <Level>(ResourceManager::getLevels()[0]);
 
 	return true;
 }

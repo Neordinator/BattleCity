@@ -16,14 +16,32 @@
 #include "Game/Game.h"
 
 
-glm::ivec2 g_windowSize(640, 480);
-Game gBattleCity(g_windowSize);
+glm::ivec2 g_windowSize(13 * 16, 14 * 16);
+std::unique_ptr<Game> gBattleCity = std::make_unique<Game>(g_windowSize);
 
 void glfwWindowSizeCallback(GLFWwindow* pWindow, int width, int height)
 {
 	g_windowSize.x = width;
 	g_windowSize.y = height;
-	Render::Renderer::setViewport(g_windowSize.x, g_windowSize.y, 0, 0);
+
+	const float map_aspect_ratio = 13.f / 14.f;
+	unsigned int viewPortWidth = g_windowSize.x;
+	unsigned int viewPortHeight = g_windowSize.y;
+	unsigned int viewPortLeftOffset = 0;
+	unsigned int viewPortBottomOffset = 0;
+
+	if (static_cast<float>(g_windowSize.x / g_windowSize.y) > map_aspect_ratio)
+	{
+		viewPortWidth = static_cast<unsigned int>(g_windowSize.y * map_aspect_ratio);
+		viewPortLeftOffset = (g_windowSize.y - viewPortWidth) / 2;
+	}
+	else
+	{
+		viewPortHeight = static_cast<unsigned int>(g_windowSize.x / map_aspect_ratio);
+		viewPortBottomOffset = (g_windowSize.y - viewPortHeight) / 2;
+	}
+
+	Render::Renderer::setViewport(viewPortWidth, viewPortHeight, viewPortLeftOffset, viewPortBottomOffset);
 }
 
 void glfwKeyCallback(GLFWwindow* pWindow, int key, int scancode, int action, int mode)
@@ -34,46 +52,13 @@ void glfwKeyCallback(GLFWwindow* pWindow, int key, int scancode, int action, int
 	}
 	if (key == GLFW_KEY_ENTER && action == GLFW_PRESS)
 	{
-		++gBattleCity.stateSwitcher;
-		if (gBattleCity.stateSwitcher > 9)
+		++gBattleCity->stateSwitcher;
+		if (gBattleCity->stateSwitcher > 9)
 		{
-			gBattleCity.stateSwitcher ^= gBattleCity.stateSwitcher;
-		}
-		switch (gBattleCity.stateSwitcher)
-		{
-		case 0:
-			gBattleCity.pAnimeGirlAnimatedSprite->setState("normalState");
-			break;
-		case 1:
-			gBattleCity.pAnimeGirlAnimatedSprite->setState("hurtState");
-			break;
-		case 2:
-			gBattleCity.pAnimeGirlAnimatedSprite->setState("victoryState");
-			break;
-		case 3:
-			gBattleCity.pAnimeGirlAnimatedSprite->setState("afraidState");
-			break;
-		case 4:
-			gBattleCity.pAnimeGirlAnimatedSprite->setState("sadState");
-			break;
-		case 5:
-			gBattleCity.pAnimeGirlAnimatedSprite->setState("angryState");
-			break;
-		case 6:
-			gBattleCity.pAnimeGirlAnimatedSprite->setState("depressedState");
-			break;
-		case 7:
-			gBattleCity.pAnimeGirlAnimatedSprite->setState("enragedState");
-			break;
-		case 8:
-			gBattleCity.pAnimeGirlAnimatedSprite->setState("happyState");
-			break;
-		case 9:
-			gBattleCity.pAnimeGirlAnimatedSprite->setState("ecstaticState");
-			break;
+			gBattleCity->stateSwitcher ^= gBattleCity->stateSwitcher;
 		}
 	}
-	gBattleCity.setKey(key, action);
+	gBattleCity->setKey(key, action);
 }
 
 int main(int argc, char** argv)
@@ -116,7 +101,7 @@ int main(int argc, char** argv)
 
 	{
 		ResourceManager::setExecutablePath(argv[0]);
-		gBattleCity.init();
+		gBattleCity->init();
 		
 
 		auto lastTime = std::chrono::high_resolution_clock::now();
@@ -131,7 +116,7 @@ int main(int argc, char** argv)
 			lastTime = currentTime;
 			//pBattleCityAnimatedSprite->update(duration);
 			//pAnimeGirlAnimatedSprite->update(duration);
-			gBattleCity.update(duration);
+			gBattleCity->update(duration);
 			// Render here
 			Render::Renderer::clear();
 
@@ -147,11 +132,12 @@ int main(int argc, char** argv)
 			//pBattleCitySprite->render();
 			//pBattleCityAnimatedSprite->render();
 			//pAnimeGirlAnimatedSprite->render();
-			gBattleCity.render();
+			gBattleCity->render();
 
 			// Swap front and back buffers
 			glfwSwapBuffers(pWindow);
 		}
+		gBattleCity = nullptr;
 		ResourceManager::unloadAllResources();
 	}//область видимости для вызова деструктора ResourceManager перед уничтожением контекста OpenGL
 	glfwTerminate();

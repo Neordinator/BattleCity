@@ -21,14 +21,20 @@ add_executable(${PROJECT_NAME}
 	src/Renderer/Texture2D.cpp
 	src/Renderer/Sprite.h
 	src/Renderer/Sprite.cpp
-	src/Renderer/AnimatedSprite.h
-	src/Renderer/AnimatedSprite.cpp
+	src/Renderer/SpriteAnimator.h
+	src/Renderer/SpriteAnimator.cpp
 	src/Resources/ResourceManager.h
 	src/Resources/ResourceManager.cpp
 	src/Game/Game.h
 	src/Game/Game.cpp
+	src/Game/Level.h
+	src/Game/Level.cpp
+	src/Game/IGameObject.h
+	src/Game/IGameObject.cpp
 	src/Game/BattleCity/Panzer.h
 	src/Game/BattleCity/Panzer.cpp
+	src/Game/BattleCity/BrickWall.h
+	src/Game/BattleCity/BrickWall.cpp
 	src/Resources/stb_image.h
 )
 
