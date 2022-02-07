@@ -98,6 +98,7 @@ int main(int argc, char** argv)
 	std::cout << "OpenGL version: " << Render::Renderer::getVersionStr() << std::endl;
 
 	Render::Renderer::setClearColor(0, 0, 0, 1);
+	Render::Renderer::setDepthTest(true);
 
 	{
 		ResourceManager::setExecutablePath(argv[0]);

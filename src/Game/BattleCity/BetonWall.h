@@ -41,7 +41,7 @@ public:
 
 	/*template<typename Other, typename Target>
 	BrickWall(std::shared_ptr<Other> const& other, Target* p);*/
-	BetonWall(const EBetonWallType, const glm::vec2&, const glm::vec2&, const float);
+	BetonWall(const EBetonWallType, const glm::vec2&, const glm::vec2&, const float, const float);
 
 	//std::shared_ptr<BrickWall> operator=(BrickWall*);
 

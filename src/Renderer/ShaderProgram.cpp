@@ -63,6 +63,10 @@ namespace Render
 	{
 		glUniform1i(glGetUniformLocation(m_ID, name.c_str()), value);
 	}
+	void ShaderProgram::setFloat(const std::string& name, const GLfloat value)
+	{
+		glUniform1f(glGetUniformLocation(m_ID, name.c_str()), value);
+	}
 	void ShaderProgram::use() const
 	{
 		glUseProgram(m_ID);

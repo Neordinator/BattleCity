@@ -11,8 +11,8 @@ BrickWall::BrickWall(std::shared_ptr<Other> const& other, Target* p)
 	assert(sp.use_count() == 0);
 	assert(sp.get() == &i);
 }*/
-BetonWall::BetonWall(const EBetonWallType eBetonWallType, const glm::vec2& position, const glm::vec2& size, const float rotation)
-	: IGameObject(position, size, rotation)
+BetonWall::BetonWall(const EBetonWallType eBetonWallType, const glm::vec2& position, const glm::vec2& size, const float rotation, const float layer)
+	: IGameObject(position, size, rotation, layer)
 	, m_pCurrentBlockState({ EBlockState::Destroyed, EBlockState::Destroyed, EBlockState::Destroyed, EBlockState::Destroyed })
 	, m_sprite(ResourceManager::getSprite("betonWall"))
 	, m_blockOffsets({ glm::vec2(0, m_size.y / 2.f), glm::vec2(m_size.x / 2.f, m_size.y / 2.f), glm::vec2(0, 0), glm::vec2(m_size.x / 2.f, 0) })
@@ -68,7 +68,7 @@ void BetonWall::renderBlock(const EBlockLocation eBlockLocation) const
 	const EBlockState state = m_pCurrentBlockState[static_cast<size_t>(eBlockLocation)];
 	if (state != EBlockState::Destroyed)
 	{
-		m_sprite->render(m_position + offsets[static_cast<size_t>(eBlockLocation)], m_size / 2.f, m_rotation);
+		m_sprite->render(m_position + offsets[static_cast<size_t>(eBlockLocation)], m_size / 2.f, m_rotation, m_layer);
 	}
 }
 

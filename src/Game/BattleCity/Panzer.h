@@ -22,7 +22,7 @@ public:
 		Right
 	};
 
-	Panzer(const float, const glm::vec2&, const glm::vec2&);
+	Panzer(const float, const glm::vec2&, const glm::vec2&, const float);
 
 	void render() const override;
 	void setOrientation(const EOrientation);

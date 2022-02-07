@@ -21,6 +21,7 @@ namespace Render
 		ShaderProgram& operator=(ShaderProgram&&) noexcept;
 		ShaderProgram(ShaderProgram&&) noexcept;
 		void setInt(const std::string&, const GLint);
+		void setFloat(const std::string&, const GLfloat);
 		bool isCompiled() const { return m_isCompiled; }
 		void use() const;
 		void setMatrix4(const std::string&, const glm::mat4&);

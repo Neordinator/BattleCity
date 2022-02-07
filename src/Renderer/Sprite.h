@@ -39,7 +39,7 @@ namespace Render
 		Sprite(std::shared_ptr<Texture2D>, std::string, std::shared_ptr<ShaderProgram>);
 		~Sprite();
 
-		void render(const glm::vec2&, const glm::vec2&, const float, const size_t frameId = 0) const;
+		void render(const glm::vec2&, const glm::vec2&, const float, const float layer = 0, const size_t frameId = 0) const;
 
 		void insertFrames(std::vector<FrameDescription>);
 		uint64_t getFrameDuration(const size_t frameId) const;
