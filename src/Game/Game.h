@@ -1,15 +1,17 @@
 #pragma once
 
+#include <glad/glad.h>
+#include <GLFW/glfw3.h>
+#include <glm/mat4x4.hpp>
+#include <glm/gtc/matrix_transform.hpp>
+#include <glm/vec2.hpp>
+
 #include <array>
 #include <iostream>
 
-#include "../Resources/ResourceManager.h"
-#include "../Game/BattleCity/Panzer.h"
 #include "../Physics/PhysicsEngine.h"
+#include "../Game/BattleCity/Panzer.h"
 #include "Level.h"
-
-class Panzer;
-class Level;
 
 class Game
 {

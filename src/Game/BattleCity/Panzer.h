@@ -3,15 +3,11 @@
 #include <glm/vec2.hpp>
 #include <memory>
 
-#include "../../Resources/ResourceManager.h"
 #include "../IGameObject.h"
-#include "../../Renderer/SpriteAnimator.h"
 #include "../../System/Timer.h"
+#include "../../Renderer/SpriteAnimator.h"
+#include "../../Resources/ResourceManager.h"
 
-namespace Render
-{
-	class Sprite;
-}
 class Panzer : public IGameObject
 {
 public:

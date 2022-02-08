@@ -1,8 +1,11 @@
 #include "BetonWall.h"
 
-#include "../../src/Resources/ResourceManager.h"
+class IGameObject;
 
-
+namespace Render
+{
+	class Sprite;
+}
 /*template<typename Other, typename Target>
 BrickWall::BrickWall(std::shared_ptr<Other> const& other, Target* p)
 {

@@ -1,5 +1,12 @@
 #include "Panzer.h"
 
+namespace Render
+{
+	class Sprite;
+	class SpriteAnimator;
+}
+class IGameObject;
+
 Panzer::Panzer(const double maxVelocity, const glm::vec2& position, const glm::vec2& size, const float layer)
 	: IGameObject(position, size, 0.f, layer), m_eOrientation(EOrientation::Top)
 	, m_pSprite_top(ResourceManager::getSprite("yellowPanzer1_top")), m_spriteAnimator_top(m_pSprite_top)
@@ -17,6 +24,8 @@ Panzer::Panzer(const double maxVelocity, const glm::vec2& position, const glm::v
 	);
 	m_respawnTimer.start(1500);
 	m_shieldTimer.setCallback([&]() { m_hasShield = false; });
+
+	m_colliders.emplace_back(glm::vec2(0), m_size);
 }
 
 void Panzer::render() const

@@ -1,4 +1,5 @@
 # include "ShaderProgram.h"
+
 namespace Render
 {
 	Render::ShaderProgram::ShaderProgram(const std::string& vertexShader, const std::string& fragmentShader)

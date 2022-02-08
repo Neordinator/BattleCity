@@ -4,12 +4,8 @@
 #include <array>
 
 #include "../IGameObject.h"
-#include "../../Renderer/Sprite.h"
+#include "../../src/Resources/ResourceManager.h"
 
-namespace Render
-{
-	class Sprite;
-}
 class Eagle : public IGameObject
 {
 public:

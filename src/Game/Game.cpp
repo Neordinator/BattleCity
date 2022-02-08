@@ -1,10 +1,7 @@
-#include <glad/glad.h>
-#include <GLFW/glfw3.h>
-#include <glm/mat4x4.hpp>
-#include <glm/gtc/matrix_transform.hpp>
-#include <glm/vec2.hpp>
-
 #include "Game.h"
+
+class Panzer;
+class Level;
 
 Game::Game(const glm::ivec2& windowSize) : m_eCurrentGameState(EGameState::Active), m_windowSize(windowSize)
 {
@@ -84,9 +81,10 @@ bool Game::init()
 	glm::mat4 modelMatrix_2 = glm::mat4(1.f);
 	modelMatrix_2 = glm::translate(modelMatrix_2, glm::vec3(590.f, 50.0f, 0.0f));*/
 
-	m_pLevel = std::make_shared <Level>(ResourceManager::getLevels()[1]);
+	m_pLevel = std::make_shared<Level>(ResourceManager::getLevels()[1]);
 	m_windowSize.x = static_cast<int>(m_pLevel->getLevelWidth());
 	m_windowSize.y = static_cast<int>(m_pLevel->getLevelHeight());
+	Physics::PhysicsEngine::setCurrentLevel(m_pLevel);
 
 	glm::mat4 projectionMatrix = glm::ortho(0.f, static_cast<float>(m_windowSize.x), 0.f, static_cast<float>(m_windowSize.y), -100.f, 100.f);
 
@@ -96,9 +94,9 @@ bool Game::init()
 
 	m_pPanzer = std::make_shared<Panzer>(0.05, m_pLevel->getPlayerRespawn_1(), glm::vec2(Level::BLOCK_SIZE, Level::BLOCK_SIZE), 0.f);
 
-	PhysicsEngine::addDynamicGameObject(m_pPanzer);
+	Physics::PhysicsEngine::addDynamicGameObject(m_pPanzer);
 
-	m_pLevel = std::make_shared <Level>(ResourceManager::getLevels()[1]);
+	m_pLevel = std::make_shared<Level>(ResourceManager::getLevels()[1]);
 
 	return true;
 }

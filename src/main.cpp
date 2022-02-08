@@ -103,7 +103,7 @@ int main(int argc, char** argv)
 
 	{
 		ResourceManager::setExecutablePath(argv[0]);
-		PhysicsEngine::init();
+		Physics::PhysicsEngine::init();
 		gBattleCity->init();
 
 		glfwSetWindowSize(pWindow, static_cast<int>(3 * gBattleCity->getCurrentLevelWidth()), static_cast<int>(3 * gBattleCity->getCurrentLevelHeight()));
@@ -121,7 +121,7 @@ int main(int argc, char** argv)
 			//pBattleCityAnimatedSprite->update(duration);
 			//pAnimeGirlAnimatedSprite->update(duration);
 			gBattleCity->update(duration);
-			PhysicsEngine::update(duration);
+			Physics::PhysicsEngine::update(duration);
 			// Render here
 			Render::Renderer::clear();
 

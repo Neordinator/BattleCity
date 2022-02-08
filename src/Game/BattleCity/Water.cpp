@@ -1,7 +1,5 @@
 #include "Water.h"
 
-#include "../../src/Resources/ResourceManager.h"
-
 
 /*template<typename Other, typename Target>
 BrickWall::BrickWall(std::shared_ptr<Other> const& other, Target* p)

@@ -1,7 +1,6 @@
 #include "Ice.h"
 
-#include "../../src/Resources/ResourceManager.h"
-
+class IGameObject;
 
 /*template<typename Other, typename Target>
 BrickWall::BrickWall(std::shared_ptr<Other> const& other, Target* p)

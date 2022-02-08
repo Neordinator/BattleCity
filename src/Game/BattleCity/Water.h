@@ -6,6 +6,7 @@
 #include "../IGameObject.h"
 #include "../../Renderer/Sprite.h"
 #include "../../src/Renderer/SpriteAnimator.h"
+#include "../../src/Resources/ResourceManager.h"
 
 namespace Render
 {
