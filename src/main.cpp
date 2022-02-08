@@ -13,6 +13,7 @@
 // СОБСТВЕННЫЕ
 #include "Renderer/Renderer.h"
 #include "Resources/ResourceManager.h"
+#include "Physics/PhysicsEngine.h"
 #include "Game/Game.h"
 
 
@@ -102,9 +103,10 @@ int main(int argc, char** argv)
 
 	{
 		ResourceManager::setExecutablePath(argv[0]);
+		PhysicsEngine::init();
 		gBattleCity->init();
+
 		glfwSetWindowSize(pWindow, static_cast<int>(3 * gBattleCity->getCurrentLevelWidth()), static_cast<int>(3 * gBattleCity->getCurrentLevelHeight()));
-		
 
 		auto lastTime = std::chrono::high_resolution_clock::now();
 		// Loop until the user closes the window
@@ -119,6 +121,7 @@ int main(int argc, char** argv)
 			//pBattleCityAnimatedSprite->update(duration);
 			//pAnimeGirlAnimatedSprite->update(duration);
 			gBattleCity->update(duration);
+			PhysicsEngine::update(duration);
 			// Render here
 			Render::Renderer::clear();
 

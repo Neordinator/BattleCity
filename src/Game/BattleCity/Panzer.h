@@ -23,12 +23,15 @@ public:
 		Right
 	};
 
+public:
 	Panzer(const double, const glm::vec2&, const glm::vec2&, const float);
 
+public:
 	void render() const override;
 	void setOrientation(const EOrientation);
-	void move(const bool);
 	void update(const double) override;
+	double getMaxVelocity() const;
+	void setVelocity(const double) override;
 
 private:
 	EOrientation m_eOrientation;
@@ -50,9 +53,7 @@ private:
 	Timer m_respawnTimer;
 	Timer m_shieldTimer;
 
-	bool m_move;
 	bool m_isSpawning;
 	bool m_hasShield;
-	double m_velocity;
-	glm::vec2 m_moveOffset;
+	double m_maxVelocity;
 };

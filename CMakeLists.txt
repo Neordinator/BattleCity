@@ -7,6 +7,8 @@ add_executable(${PROJECT_NAME}
 	src/main.cpp
 	src/System/Timer.h
 	src/System/Timer.cpp
+	src/Physics/PhysicsEngine.h
+	src/Physics/PhysicsEngine.cpp
 	src/Renderer/VertexBuffer.h
 	src/Renderer/VertexBuffer.cpp
 	src/Renderer/IndexBuffer.h

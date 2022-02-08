@@ -5,6 +5,7 @@
 
 #include "../Resources/ResourceManager.h"
 #include "../Game/BattleCity/Panzer.h"
+#include "../Physics/PhysicsEngine.h"
 #include "Level.h"
 
 class Panzer;
@@ -36,6 +37,6 @@ private:
 
 	glm::ivec2 m_windowSize;
 	EGameState m_eCurrentGameState;
-	std::unique_ptr<Panzer> m_pPanzer;
-	std::unique_ptr<Level> m_pLevel;
+	std::shared_ptr<Panzer> m_pPanzer;
+	std::shared_ptr<Level> m_pLevel;
 };

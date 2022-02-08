@@ -37,26 +37,26 @@ void Game::update(const double delta)
 		if (m_keys[GLFW_KEY_W])
 		{
 			m_pPanzer->setOrientation(Panzer::EOrientation::Top);
-			m_pPanzer->move(true);
+			m_pPanzer->setVelocity(m_pPanzer->getMaxVelocity());
 		}
 		else if (m_keys[GLFW_KEY_A])
 		{
 			m_pPanzer->setOrientation(Panzer::EOrientation::Left);
-			m_pPanzer->move(true);
+			m_pPanzer->setVelocity(m_pPanzer->getMaxVelocity());
 		}
 		else if (m_keys[GLFW_KEY_S])
 		{
 			m_pPanzer->setOrientation(Panzer::EOrientation::Bottom);
-			m_pPanzer->move(true);
+			m_pPanzer->setVelocity(m_pPanzer->getMaxVelocity());
 		}
 		else if (m_keys[GLFW_KEY_D])
 		{
 			m_pPanzer->setOrientation(Panzer::EOrientation::Right);
-			m_pPanzer->move(true);
+			m_pPanzer->setVelocity(m_pPanzer->getMaxVelocity());
 		}
 		else
 		{
-			m_pPanzer->move(false);
+			m_pPanzer->setVelocity(0);
 		}
 		m_pPanzer->update(delta);
 	}
@@ -84,7 +84,7 @@ bool Game::init()
 	glm::mat4 modelMatrix_2 = glm::mat4(1.f);
 	modelMatrix_2 = glm::translate(modelMatrix_2, glm::vec3(590.f, 50.0f, 0.0f));*/
 
-	m_pLevel = std::make_unique <Level>(ResourceManager::getLevels()[1]);
+	m_pLevel = std::make_shared <Level>(ResourceManager::getLevels()[1]);
 	m_windowSize.x = static_cast<int>(m_pLevel->getLevelWidth());
 	m_windowSize.y = static_cast<int>(m_pLevel->getLevelHeight());
 
@@ -94,9 +94,11 @@ bool Game::init()
 	pSpriteShaderProgram->setInt("tex", 0);
 	pSpriteShaderProgram->setMatrix4("projectionMat", projectionMatrix);
 
-	m_pPanzer = std::make_unique<Panzer>(0.05, m_pLevel->getPlayerRespawn_1(), glm::vec2(Level::BLOCK_SIZE, Level::BLOCK_SIZE), 0.f);
+	m_pPanzer = std::make_shared<Panzer>(0.05, m_pLevel->getPlayerRespawn_1(), glm::vec2(Level::BLOCK_SIZE, Level::BLOCK_SIZE), 0.f);
 
-	m_pLevel = std::make_unique <Level>(ResourceManager::getLevels()[1]);
+	PhysicsEngine::addDynamicGameObject(m_pPanzer);
+
+	m_pLevel = std::make_shared <Level>(ResourceManager::getLevels()[1]);
 
 	return true;
 }
