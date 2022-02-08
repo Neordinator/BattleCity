@@ -45,6 +45,8 @@ add_executable(${PROJECT_NAME}
 	src/Game/BattleCity/Trees.cpp
 	src/Game/BattleCity/Ice.h
 	src/Game/BattleCity/Ice.cpp
+	src/Game/BattleCity/Border.h
+	src/Game/BattleCity/Border.cpp
 	src/Resources/stb_image.h
 )
 
