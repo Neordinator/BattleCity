@@ -25,7 +25,7 @@ public:
 	Level(const std::vector<std::string>& levelDescription);
 
 	void render() const;
-	void update(const uint64_t delta);
+	void update(const double delta);
 	friend std::shared_ptr<IGameObject> createGameObjectFromDescription(const char, const glm::vec2&, const glm::vec2&, const float);
 	size_t getLevelWidth() const;
 	size_t getLevelHeight() const;

@@ -6,6 +6,7 @@
 #include "../../Resources/ResourceManager.h"
 #include "../IGameObject.h"
 #include "../../Renderer/SpriteAnimator.h"
+#include "../../System/Timer.h"
 
 namespace Render
 {
@@ -22,12 +23,12 @@ public:
 		Right
 	};
 
-	Panzer(const float, const glm::vec2&, const glm::vec2&, const float);
+	Panzer(const double, const glm::vec2&, const glm::vec2&, const float);
 
 	void render() const override;
 	void setOrientation(const EOrientation);
 	void move(const bool);
-	void update(const uint64_t) override;
+	void update(const double) override;
 
 private:
 	EOrientation m_eOrientation;
@@ -40,7 +41,18 @@ private:
 	Render::SpriteAnimator m_spriteAnimator_left;
 	Render::SpriteAnimator m_spriteAnimator_right;
 
+	std::shared_ptr<Render::Sprite> m_pSprite_respawn;
+	Render::SpriteAnimator m_spriteAnimator_respawn;
+
+	std::shared_ptr<Render::Sprite> m_pSprite_shield;
+	Render::SpriteAnimator m_spriteAnimator_shield;
+
+	Timer m_respawnTimer;
+	Timer m_shieldTimer;
+
 	bool m_move;
-	float m_velocity;
+	bool m_isSpawning;
+	bool m_hasShield;
+	double m_velocity;
 	glm::vec2 m_moveOffset;
 };

@@ -21,7 +21,7 @@ public:
 	Eagle(const glm::vec2&, const glm::vec2&, const float, const float);
 
 	virtual void render() const override;
-	void update(const uint64_t) override;
+	void update(const double) override;
 
 private:
 	std::array<std::shared_ptr<Render::Sprite>, 2> m_sprite;

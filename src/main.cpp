@@ -103,7 +103,7 @@ int main(int argc, char** argv)
 	{
 		ResourceManager::setExecutablePath(argv[0]);
 		gBattleCity->init();
-		glfwSetWindowSize(pWindow, static_cast<int>(gBattleCity->getCurrentLevelWidth()), static_cast<int>(gBattleCity->getCurrentLevelHeight()));
+		glfwSetWindowSize(pWindow, static_cast<int>(3 * gBattleCity->getCurrentLevelWidth()), static_cast<int>(3 * gBattleCity->getCurrentLevelHeight()));
 		
 
 		auto lastTime = std::chrono::high_resolution_clock::now();
@@ -114,7 +114,7 @@ int main(int argc, char** argv)
 			glfwPollEvents();
 
 			auto currentTime = std::chrono::high_resolution_clock::now();
-			uint64_t duration = std::chrono::duration_cast<std::chrono::nanoseconds>(currentTime - lastTime).count();
+			double duration = std::chrono::duration<double, std::milli>(currentTime - lastTime).count();
 			lastTime = currentTime;
 			//pBattleCityAnimatedSprite->update(duration);
 			//pAnimeGirlAnimatedSprite->update(duration);

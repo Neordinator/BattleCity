@@ -30,7 +30,7 @@ public:
 	//std::shared_ptr<BrickWall> operator=(BrickWall*);
 
 	virtual void render() const override;
-	void update(const uint64_t) override;
+	void update(const double) override;
 
 private:
 	void renderBlock(const EBlockLocation) const;

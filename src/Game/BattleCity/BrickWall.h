@@ -60,7 +60,7 @@ public:
 	//std::shared_ptr<BrickWall> operator=(BrickWall*);
 
 	virtual void render() const override;
-	virtual void update(const uint64_t delta) override;
+	virtual void update(const double delta) override;
 
 private:
 	void renderBrick(const EBrickLocation) const;
