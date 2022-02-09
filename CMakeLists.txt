@@ -37,6 +37,8 @@ add_executable(${PROJECT_NAME}
 	src/Game/IGameObject.cpp
 	src/Game/BattleCity/Panzer.h
 	src/Game/BattleCity/Panzer.cpp
+	src/Game/BattleCity/Bullet.h
+	src/Game/BattleCity/Bullet.cpp
 	src/Game/BattleCity/BrickWall.h
 	src/Game/BattleCity/BrickWall.cpp
 	src/Game/BattleCity/BetonWall.h

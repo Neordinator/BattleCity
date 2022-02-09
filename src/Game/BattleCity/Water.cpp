@@ -15,7 +15,7 @@ Water::Water( const glm::vec2& position, const glm::vec2& size, const float rota
 	, m_spriteAnimator(m_sprite)
 	, m_blockOffsets({ glm::vec2(0, m_size.y / 2.f), glm::vec2(m_size.x / 2.f, m_size.y / 2.f), glm::vec2(0, 0), glm::vec2(m_size.x / 2.f, 0) })
 {
-
+	m_colliders.emplace_back(glm::vec2(0), m_size);
 }
 
 /*std::shared_ptr<BrickWall> BrickWall::operator=(BrickWall* other)
