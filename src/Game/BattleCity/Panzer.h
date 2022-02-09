@@ -3,10 +3,11 @@
 #include <glm/vec2.hpp>
 #include <memory>
 
-#include "../IGameObject.h"
+#include "Bullet.h"
 #include "../../System/Timer.h"
 #include "../../Renderer/SpriteAnimator.h"
 #include "../../Resources/ResourceManager.h"
+#include "../../Physics/PhysicsEngine.h"
 
 class Panzer : public IGameObject
 {
@@ -28,9 +29,11 @@ public:
 	void update(const double) override;
 	double getMaxVelocity() const;
 	void setVelocity(const double) override;
+	void fire();
 
 private:
 	EOrientation m_eOrientation;
+	std::shared_ptr<Bullet> m_pCurrentBullet;
 	std::shared_ptr<Render::Sprite> m_pSprite_top;
 	std::shared_ptr<Render::Sprite> m_pSprite_bottom;
 	std::shared_ptr<Render::Sprite> m_pSprite_left;

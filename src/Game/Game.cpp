@@ -55,6 +55,11 @@ void Game::update(const double delta)
 		{
 			m_pPanzer->setVelocity(0);
 		}
+
+		if (m_pPanzer && m_keys[GLFW_KEY_SPACE])
+		{
+			m_pPanzer->fire();
+		}
 		m_pPanzer->update(delta);
 	}
 }

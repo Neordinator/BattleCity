@@ -5,10 +5,15 @@ namespace Render
 	class Sprite;
 	class SpriteAnimator;
 }
+namespace Physics
+{
+	class PhysicsEngine;
+}
 class IGameObject;
 
 Panzer::Panzer(const double maxVelocity, const glm::vec2& position, const glm::vec2& size, const float layer)
 	: IGameObject(position, size, 0.f, layer), m_eOrientation(EOrientation::Top)
+	, m_pCurrentBullet(std::make_shared<Bullet>(0.1, m_position + m_size / 4.f, m_size / 2.f, layer))
 	, m_pSprite_top(ResourceManager::getSprite("yellowPanzer1_top")), m_spriteAnimator_top(m_pSprite_top)
 	, m_pSprite_bottom(ResourceManager::getSprite("yellowPanzer1_bottom")), m_spriteAnimator_bottom(m_pSprite_bottom)
 	, m_pSprite_left(ResourceManager::getSprite("yellowPanzer1_left")), m_spriteAnimator_left(m_pSprite_left)
@@ -58,6 +63,10 @@ void Panzer::render() const
 			m_pSprite_shield->render(m_position, m_size, m_rotation, m_layer + 0.1f, m_spriteAnimator_shield.getCurrentFrame());
 		}
 	}
+	if (m_pCurrentBullet->isActive())
+	{
+		m_pCurrentBullet->render();
+	}
 
 }
 
@@ -85,8 +94,6 @@ void Panzer::setOrientation(const EOrientation eOrientation)
 	case Panzer::EOrientation::Right:
 		m_direction.x = 1.f;
 		m_direction.y = 0.f;
-		break;
-	default:
 		break;
 	}
 }
@@ -137,5 +144,14 @@ void Panzer::setVelocity(const double velocity)
 	if (!m_isSpawning)
 	{
 		m_velocity = velocity;
+	}
+}
+
+void Panzer::fire()
+{
+	/*if (!m_pCurrentBullet->isActive()) закометированно для теста*/
+	{
+		m_pCurrentBullet->fire(m_position + m_size / 4.f, m_direction);
+		Physics::PhysicsEngine::addDynamicGameObject(m_pCurrentBullet);
 	}
 }

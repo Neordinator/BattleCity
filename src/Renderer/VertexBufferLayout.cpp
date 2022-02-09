@@ -22,7 +22,7 @@ namespace Render
 	}
 	void VertexBufferLayout::addElementLayoutFloat(const GLint count, const bool normalized)
 	{
-		m_layoutElemets.push_back({ count, GL_FLOAT, normalized, count * sizeof(GLfloat) });
+		m_layoutElemets.push_back({ static_cast<GLint>(count), GL_FLOAT, normalized, count * static_cast<unsigned int>(sizeof(GLfloat)) });
 		m_stride += m_layoutElemets.back().size;
 	}
 	const std::vector<VertexBufferLayoutElement>& VertexBufferLayout::getLayoutElements() const
