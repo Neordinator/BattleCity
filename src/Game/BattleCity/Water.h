@@ -32,6 +32,7 @@ public:
 
 	virtual void render() const override;
 	void update(const double) override;
+	virtual bool collides(const EObjectType) override;
 
 private:
 	void renderBlock(const EBlockLocation) const;
