@@ -1,10 +1,8 @@
 #pragma once
 
-#include <memory>
+#include "../GameObjects/IGameObject.h"
 #include <array>
-
-#include "../IGameObject.h"
-#include "../../src/Resources/ResourceManager.h"
+#include <memory>
 
 namespace Render
 {

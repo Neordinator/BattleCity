@@ -1,19 +1,8 @@
 #include "BetonWall.h"
 
-class IGameObject;
+#include "../../Resources/ResourceManager.h"
+#include "../../Renderer/Sprite.h"
 
-namespace Render
-{
-	class Sprite;
-}
-/*template<typename Other, typename Target>
-BrickWall::BrickWall(std::shared_ptr<Other> const& other, Target* p)
-{
-	Target i;
-	std::shared_ptr<Target> sp(std::shared_ptr<Other>(), &i);
-	assert(sp.use_count() == 0);
-	assert(sp.get() == &i);
-}*/
 BetonWall::BetonWall(const EBetonWallType eBetonWallType, const glm::vec2& position, const glm::vec2& size, const float rotation, const float layer)
 	: IGameObject(IGameObject::EObjectType::BetonWall, position, size, rotation, layer)
 	, m_pCurrentBlockState({ EBlockState::Destroyed, EBlockState::Destroyed, EBlockState::Destroyed, EBlockState::Destroyed })

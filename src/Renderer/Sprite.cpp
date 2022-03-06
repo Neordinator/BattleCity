@@ -1,5 +1,12 @@
 #include "Sprite.h"
 
+#include "ShaderProgram.h"
+#include "Texture2D.h"
+#include "Renderer.h"
+
+#include <glm/mat4x4.hpp>
+#include <glm/gtc/matrix_transform.hpp>
+
 namespace Render
 {
 	Sprite::Sprite(	std::shared_ptr<Texture2D> pTexture,

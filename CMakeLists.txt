@@ -29,32 +29,41 @@ add_executable(${PROJECT_NAME}
 	src/Renderer/SpriteAnimator.cpp
 	src/Resources/ResourceManager.h
 	src/Resources/ResourceManager.cpp
-	src/Game/Game.h
-	src/Game/Game.cpp
-	src/Game/Level.h
-	src/Game/Level.cpp
-	src/Game/IGameObject.h
-	src/Game/IGameObject.cpp
-	src/Game/BattleCity/Panzer.h
-	src/Game/BattleCity/Panzer.cpp
-	src/Game/BattleCity/Bullet.h
-	src/Game/BattleCity/Bullet.cpp
-	src/Game/BattleCity/BrickWall.h
-	src/Game/BattleCity/BrickWall.cpp
-	src/Game/BattleCity/BetonWall.h
-	src/Game/BattleCity/BetonWall.cpp
-	src/Game/BattleCity/Eagle.h
-	src/Game/BattleCity/Eagle.cpp
-	src/Game/BattleCity/Water.h
-	src/Game/BattleCity/Water.cpp
-	src/Game/BattleCity/Trees.h
-	src/Game/BattleCity/Trees.cpp
-	src/Game/BattleCity/Ice.h
-	src/Game/BattleCity/Ice.cpp
-	src/Game/BattleCity/Border.h
-	src/Game/BattleCity/Border.cpp
+	src/BattleCity/GameObjects/IGameObject.h
+	src/BattleCity/GameObjects/IGameObject.cpp
+	src/BattleCity/GameObjects/Panzer.h
+	src/BattleCity/GameObjects/Panzer.cpp
+	src/BattleCity/GameObjects/Bullet.h
+	src/BattleCity/GameObjects/Bullet.cpp
+	src/BattleCity/GameObjects/BrickWall.h
+	src/BattleCity/GameObjects/BrickWall.cpp
+	src/BattleCity/GameObjects/BetonWall.h
+	src/BattleCity/GameObjects/BetonWall.cpp
+	src/BattleCity/GameObjects/Eagle.h
+	src/BattleCity/GameObjects/Eagle.cpp
+	src/BattleCity/GameObjects/Water.h
+	src/BattleCity/GameObjects/Water.cpp
+	src/BattleCity/GameObjects/Trees.h
+	src/BattleCity/GameObjects/Trees.cpp
+	src/BattleCity/GameObjects/Ice.h
+	src/BattleCity/GameObjects/Ice.cpp
+	src/BattleCity/GameObjects/Border.h
+	src/BattleCity/GameObjects/Border.cpp
 	src/Resources/stb_image.h
+
+	src/BattleCity/Game.h
+	src/BattleCity/Game.cpp
+	
+	src/BattleCity/AIComponent.h
+	src/BattleCity/AIComponent.cpp
+	
+	src/BattleCity/GameStates/IGameState.h
+	src/BattleCity/GameStates/StartScreen.h
+	src/BattleCity/GameStates/StartScreen.cpp
+	src/BattleCity/GameStates/Level.h
+	src/BattleCity/GameStates/Level.cpp
 )
+set_property(DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR} PROPERTY VS_STARTUP_PROJECT ${PROJECT_NAME})
 
 target_compile_features(${PROJECT_NAME} PUBLIC cxx_std_17)
 
@@ -69,7 +78,9 @@ target_link_libraries(${PROJECT_NAME} glfw)
 add_subdirectory(external/glad)
 target_link_libraries(${PROJECT_NAME} glad)
 
-include_directories(external/glm)
+add_subdirectory(external/glm)
+target_link_libraries(${PROJECT_NAME} glm)
+
 include_directories(external/rapidjson/include)
 
 set_target_properties(${PROJECT_NAME} PROPERTIES RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/bin/)

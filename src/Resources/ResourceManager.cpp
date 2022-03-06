@@ -1,13 +1,27 @@
 #include "ResourceManager.h"
+
+#include "../Renderer/ShaderProgram.h"
+#include "../Renderer/Texture2D.h"
+#include "../Renderer/Sprite.h"
+
+#include <fstream>
+#include <iostream>
+#include <sstream>
+
+#include <rapidjson/document.h>
+#include <rapidjson/error/en.h>
+
 #define STB_IMAGE_IMPLEMENTATION
 #define STBI_ONLY_PNG
 #include "stb_image.h"
+
 
 ResourceManager::ShaderProgramsMap ResourceManager::m_shaderPrograms;
 ResourceManager::TexturesMap ResourceManager::m_textures;
 ResourceManager::SpritesMap ResourceManager::m_sprites;
 std::string ResourceManager::m_path;
 std::vector<std::vector<std::string>> ResourceManager::m_levels;
+std::vector<std::string> ResourceManager::m_startScreen;
 
 void ResourceManager::setExecutablePath(const std::string& executablePath)
 {
@@ -230,6 +244,28 @@ bool ResourceManager::loadJSONResources(const std::string& JSONPath)
 			}
 		}
 	}
+	auto startScreenIt = document.FindMember("start_screen");
+	if (startScreenIt != document.MemberEnd())
+	{
+		const auto descriptionArray = startScreenIt->value.GetArray();
+		m_startScreen.reserve(descriptionArray.Size());
+		size_t maxLength = 0;
+		for (const auto& currentRow : descriptionArray)
+		{
+			m_startScreen.emplace_back(currentRow.GetString());
+			if (maxLength < m_startScreen.back().length())
+			{
+				maxLength = m_startScreen.back().length();
+			}
+		}
+		for (auto& currentRow : m_startScreen)
+		{
+			while (currentRow.length() < maxLength)
+			{
+				currentRow.append("F");
+			}
+		}
+	}
 	auto levelsIt = document.FindMember("levels");
 	if (levelsIt != document.MemberEnd())
 	{
@@ -263,6 +299,11 @@ bool ResourceManager::loadJSONResources(const std::string& JSONPath)
 const std::vector<std::vector<std::string>>& ResourceManager::getLevels()
 {
 	return m_levels;
+}
+
+const std::vector<std::string>& ResourceManager::getStartScreen()
+{
+	return m_startScreen;
 }
 
 std::string ResourceManager::getFileString(const std::string& relativeFilePath)

@@ -2,8 +2,6 @@
 
 #include <memory>
 
-#include "Sprite.h"
-
 namespace Render
 {
 	class Sprite;
@@ -12,8 +10,8 @@ namespace Render
 	{
 	public:
 		SpriteAnimator(std::shared_ptr<Sprite>);
-		size_t getCurrentFrame() const { return m_currentFrame; }
-		void update(const double delta);
+		size_t getCurrentFrame() const;
+		void update(const double);
 		double getTotalDuration() const;
 		void reset();
 

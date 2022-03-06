@@ -1,13 +1,20 @@
 #include "Level.h"
 
-class IGameObject;
-class BrickWall;
-class BetonWall;
-class Water;
-class Trees;
-class Eagle;
-class Ice;
-class Border;
+#include "../GameObjects/BrickWall.h"
+#include "../GameObjects/BetonWall.h"
+#include "../GameObjects/Water.h"
+#include "../GameObjects/Trees.h"
+#include "../GameObjects/Eagle.h"
+#include "../GameObjects/Ice.h"
+#include "../GameObjects/Border.h"
+#include "../GameObjects/Panzer.h"
+
+#include <glad/glad.h>
+#include <GLFW/glfw3.h>
+
+#include <iostream>
+#include <algorithm>
+#include <cmath>
 
 std::shared_ptr<IGameObject> createGameObjectFromDescription(const char description, const glm::vec2& position, const glm::vec2& size, const float rotation)
 {
@@ -60,7 +67,7 @@ std::shared_ptr<IGameObject> createGameObjectFromDescription(const char descript
 	return nullptr;
 }
 
-Level::Level(const std::vector<std::string>& levelDescription) : m_widthPixels(0), m_heightPixels(0)
+Level::Level(const std::vector<std::string>& levelDescription, const Game::EGameMode eGameMode) : m_widthPixels(0), m_heightPixels(0), m_eGameMode(eGameMode)
 {
 	if (levelDescription.empty())
 	{
@@ -136,6 +143,20 @@ void Level::render() const
 			currentMapObject->render();
 		}
 	}
+
+	switch (m_eGameMode)
+	{
+	case Game::EGameMode::TwoPlayers:
+		m_pPanzer2->render();
+		[[fallthrough]];
+	case Game::EGameMode::OnePlayer:
+		m_pPanzer1->render();
+	}
+
+	for (const auto& currentPanzer : m_EnemyPanzers)
+	{
+		currentPanzer->render();
+	}
 }
 
 void Level::update(const double delta)
@@ -147,16 +168,120 @@ void Level::update(const double delta)
 			currentMapObject->update(delta);
 		}
 	}
+
+	switch (m_eGameMode)
+	{
+	case Game::EGameMode::TwoPlayers:
+		m_pPanzer2->update(delta);
+		[[fallthrough]];
+	case Game::EGameMode::OnePlayer:
+		m_pPanzer1->update(delta);
+	}
+
+	for (const auto& currentPanzer : m_EnemyPanzers)
+	{
+		currentPanzer->update(delta);
+	}
 }
 
-size_t Level::getLevelWidth() const
+unsigned int Level::getStateWidth() const
 {
 	return (m_widthBlocks + 3) * BLOCK_SIZE;
 }
 
-size_t Level::getLevelHeight() const
+unsigned int Level::getStateHeight() const
 {
 	return (m_heightBlocks + 1) * BLOCK_SIZE;
+}
+
+void Level::processInput(const std::array<bool, 349>& keys)
+{
+
+	switch (m_eGameMode)
+	{
+	case Game::EGameMode::TwoPlayers:
+		if (keys[GLFW_KEY_UP])
+		{
+			m_pPanzer2->setOrientation(Panzer::EOrientation::Top);
+			m_pPanzer2->setVelocity(m_pPanzer2->getMaxVelocity());
+		}
+		else if (keys[GLFW_KEY_LEFT])
+		{
+			m_pPanzer2->setOrientation(Panzer::EOrientation::Left);
+			m_pPanzer2->setVelocity(m_pPanzer2->getMaxVelocity());
+		}
+		else if (keys[GLFW_KEY_DOWN])
+		{
+			m_pPanzer2->setOrientation(Panzer::EOrientation::Bottom);
+			m_pPanzer2->setVelocity(m_pPanzer2->getMaxVelocity());
+		}
+		else if (keys[GLFW_KEY_RIGHT])
+		{
+			m_pPanzer2->setOrientation(Panzer::EOrientation::Right);
+			m_pPanzer2->setVelocity(m_pPanzer2->getMaxVelocity());
+		}
+		else
+		{
+			m_pPanzer2->setVelocity(0);
+		}
+
+		if (m_pPanzer2 && keys[GLFW_KEY_RIGHT_SHIFT])
+		{
+			m_pPanzer2->fire();
+		}
+		[[fallthrough]];
+	case Game::EGameMode::OnePlayer:
+		if (keys[GLFW_KEY_W])
+		{
+			m_pPanzer1->setOrientation(Panzer::EOrientation::Top);
+			m_pPanzer1->setVelocity(m_pPanzer1->getMaxVelocity());
+		}
+		else if (keys[GLFW_KEY_A])
+		{
+			m_pPanzer1->setOrientation(Panzer::EOrientation::Left);
+			m_pPanzer1->setVelocity(m_pPanzer1->getMaxVelocity());
+		}
+		else if (keys[GLFW_KEY_S])
+		{
+			m_pPanzer1->setOrientation(Panzer::EOrientation::Bottom);
+			m_pPanzer1->setVelocity(m_pPanzer1->getMaxVelocity());
+		}
+		else if (keys[GLFW_KEY_D])
+		{
+			m_pPanzer1->setOrientation(Panzer::EOrientation::Right);
+			m_pPanzer1->setVelocity(m_pPanzer1->getMaxVelocity());
+		}
+		else
+		{
+			m_pPanzer1->setVelocity(0);
+		}
+
+		if (m_pPanzer1 && keys[GLFW_KEY_SPACE])
+		{
+			m_pPanzer1->fire();
+		}
+	}
+}
+
+void Level::initLevel()
+{
+	switch (m_eGameMode)
+	{
+	case Game::EGameMode::TwoPlayers:
+		m_pPanzer2 = std::make_shared<Panzer>(Panzer::EPanzerType::Green1, false, true, Panzer::EOrientation::Top, 0.05, getPlayerRespawn_2(), glm::vec2(Level::BLOCK_SIZE, Level::BLOCK_SIZE), 0.f);
+		Physics::PhysicsEngine::addDynamicGameObject(m_pPanzer2);
+		[[fallthrough]];//если в свиче брейк не указан намеренно - std17
+	case Game::EGameMode::OnePlayer:
+		m_pPanzer1 = std::make_shared<Panzer>(Panzer::EPanzerType::Yellow1, false, true, Panzer::EOrientation::Top, 0.05, getPlayerRespawn_1(), glm::vec2(Level::BLOCK_SIZE, Level::BLOCK_SIZE), 0.f);
+		Physics::PhysicsEngine::addDynamicGameObject(m_pPanzer1);
+	}
+	m_EnemyPanzers.emplace(std::make_shared<Panzer>(Panzer::EPanzerType::Red1, true, false, Panzer::EOrientation::Bottom, 0.05, getEnemyRespawn_1(), glm::vec2(Level::BLOCK_SIZE, Level::BLOCK_SIZE), 0.f));
+	m_EnemyPanzers.emplace(std::make_shared<Panzer>(Panzer::EPanzerType::Gray1, true, false, Panzer::EOrientation::Bottom, 0.05, getEnemyRespawn_2(), glm::vec2(Level::BLOCK_SIZE, Level::BLOCK_SIZE), 0.f));
+	m_EnemyPanzers.emplace(std::make_shared<Panzer>(Panzer::EPanzerType::Gray7, true, false, Panzer::EOrientation::Bottom, 0.05, getEnemyRespawn_3(), glm::vec2(Level::BLOCK_SIZE, Level::BLOCK_SIZE), 0.f));
+	for (const auto& currentPanzer : m_EnemyPanzers)
+	{
+		Physics::PhysicsEngine::addDynamicGameObject(currentPanzer);
+	}
 }
 
 std::vector<std::shared_ptr<IGameObject>> Level::getObjectsInArea(const glm::vec2& bottomLeft, const glm::vec2& topRight)

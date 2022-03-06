@@ -1,4 +1,5 @@
 #include "SpriteAnimator.h"
+#include "Sprite.h"
 
 namespace Render
 {
@@ -34,5 +35,10 @@ namespace Render
 		m_currentFrame = 0;
 		m_currentFrameDuration = m_pSprite->getFrameDuration(0);
 		m_currentAnimationTime = 0;
+	}
+
+	size_t SpriteAnimator::getCurrentFrame() const
+	{
+		return m_currentFrame;
 	}
 }

@@ -1,30 +1,37 @@
 #include "Panzer.h"
 
-namespace Render
-{
-	class Sprite;
-	class SpriteAnimator;
-}
-namespace Physics
-{
-	class PhysicsEngine;
-}
-class IGameObject;
+#include "../../Resources/ResourceManager.h"
+#include "../../Renderer/Sprite.h"
+#include "Bullet.h"
+#include "../../Physics/PhysicsEngine.h"
+#include "../AIComponent.h"
 
-Panzer::Panzer(const double maxVelocity, const glm::vec2& position, const glm::vec2& size, const float layer)
-	: IGameObject(IGameObject::EObjectType::Panzer, position, size, 0.f, layer), m_eOrientation(EOrientation::Top)
+Panzer::Panzer(const Panzer::EPanzerType eType, const bool bHasAI, const bool bShieldOnSpawn, const EOrientation eOrientation, const double maxVelocity, const glm::vec2& position, const glm::vec2& size, const float layer)
+	: IGameObject(IGameObject::EObjectType::Panzer, position, size, 0.f, layer), m_eOrientation(eOrientation), m_bShieldOnSpawn(bShieldOnSpawn)
 	, m_pCurrentBullet(std::make_shared<Bullet>(0.1, m_position + m_size / 4.f, m_size / 2.f, m_size, layer))
-	, m_pSprite_top(ResourceManager::getSprite("yellowPanzer1_top")), m_spriteAnimator_top(m_pSprite_top)
-	, m_pSprite_bottom(ResourceManager::getSprite("yellowPanzer1_bottom")), m_spriteAnimator_bottom(m_pSprite_bottom)
-	, m_pSprite_left(ResourceManager::getSprite("yellowPanzer1_left")), m_spriteAnimator_left(m_pSprite_left)
-	, m_pSprite_right(ResourceManager::getSprite("yellowPanzer1_right")), m_spriteAnimator_right(m_pSprite_right)
+	, m_pSprite_top(ResourceManager::getSprite(getPanzerSpriteFromEnum(eType) + "_top")), m_spriteAnimator_top(m_pSprite_top)
+	, m_pSprite_bottom(ResourceManager::getSprite(getPanzerSpriteFromEnum(eType) + "_bottom")), m_spriteAnimator_bottom(m_pSprite_bottom)
+	, m_pSprite_left(ResourceManager::getSprite(getPanzerSpriteFromEnum(eType) + "_left")), m_spriteAnimator_left(m_pSprite_left)
+	, m_pSprite_right(ResourceManager::getSprite(getPanzerSpriteFromEnum(eType) + "_right")), m_spriteAnimator_right(m_pSprite_right)
 	, m_pSprite_respawn(ResourceManager::getSprite("respawn")), m_spriteAnimator_respawn(m_pSprite_respawn)
 	, m_pSprite_shield(ResourceManager::getSprite("shield")), m_spriteAnimator_shield(m_pSprite_shield)
 	, m_isSpawning(true), m_hasShield(false), m_maxVelocity(maxVelocity)
 {
+	setOrientation(m_eOrientation);
 	m_respawnTimer.setCallback(
-		[&]() {
-			m_isSpawning = false; m_hasShield = true; m_shieldTimer.start(2000);
+		[&]()
+		{
+			m_isSpawning = false;
+			if (m_pAIComponent)
+			{
+				m_velocity = m_maxVelocity;
+			}
+			if (m_bShieldOnSpawn)
+			{
+
+			}
+			m_hasShield = true;
+			m_shieldTimer.start(2000);
 		}
 	);
 	m_respawnTimer.start(1500);
@@ -33,6 +40,11 @@ Panzer::Panzer(const double maxVelocity, const glm::vec2& position, const glm::v
 	m_colliders.emplace_back(glm::vec2(0), m_size);
 
 	Physics::PhysicsEngine::addDynamicGameObject(m_pCurrentBullet);
+
+	if (bHasAI)
+	{
+		m_pAIComponent = std::make_unique<AIComponent>(this);
+	}
 }
 
 void Panzer::render() const
@@ -74,10 +86,6 @@ void Panzer::render() const
 
 void Panzer::setOrientation(const EOrientation eOrientation)
 {
-	if (m_eOrientation == eOrientation)
-	{
-		return;
-	}
 	m_eOrientation = eOrientation;
 	switch (m_eOrientation)
 	{
@@ -113,6 +121,10 @@ void Panzer::update(const double delta)
 	}
 	else
 	{
+		if (m_pAIComponent)
+		{
+			m_pAIComponent->update(delta);
+		}
 		if (m_hasShield)
 		{
 			m_spriteAnimator_shield.update(delta);
@@ -159,4 +171,9 @@ void Panzer::fire()
 	{
 		m_pCurrentBullet->fire(m_position + m_size / 4.f + m_size * m_direction / 4.f, m_direction);
 	}
+}
+
+const std::string& Panzer::getPanzerSpriteFromEnum(const EPanzerType eType)
+{
+	return PanzerTypeToSpriteString[static_cast<size_t>(eType)];
 }

@@ -1,13 +1,16 @@
 #pragma once
 
-#include <memory>
-#include <array>
-
-#include "../IGameObject.h"
-#include "../../Resources/ResourceManager.h"
-#include "../../System/Timer.h"
+#include "../GameObjects/IGameObject.h"
 #include "../../Renderer/SpriteAnimator.h"
+#include "../../System/Timer.h"
 
+#include <array>
+#include <memory>
+
+namespace Render
+{
+	class Sprite;
+}
 class Bullet : public IGameObject
 {
 public:
@@ -27,7 +30,6 @@ public:
 	void update(const double) override;
 	bool isActive() const;
 	void fire(const glm::vec2& position, const glm::vec2& direction);
-	virtual void onCollision() override;
 
 private:
 	glm::vec2 m_explosionSize;

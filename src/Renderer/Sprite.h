@@ -1,23 +1,20 @@
 #pragma once
 
-#include <glad/glad.h>
-#include <glm/vec2.hpp>
-#include <glm/mat4x4.hpp>
-#include <glm/gtc/matrix_transform.hpp>
-#include <memory>
-
-#include "ShaderProgram.h"
-#include "Texture2D.h"
-#include "Renderer.h"
-
-#include "VertexArray.h"
 #include "VertexBuffer.h"
 #include "IndexBuffer.h"
+#include "VertexArray.h"
+
+#include <glad/glad.h>
+#include <glm/vec2.hpp>
+
+#include <memory>
+#include <string>
 
 namespace Render
 {
 	class Texture2D;
 	class SubTexture2D;
+	class ShaderProgram;
 
 	struct FrameDescription
 	{

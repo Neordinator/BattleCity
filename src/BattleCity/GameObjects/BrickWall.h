@@ -1,10 +1,19 @@
 #pragma once
 
-#include <memory>
-#include <array>
+#include "../GameObjects/IGameObject.h"
 
-#include "../IGameObject.h"
-#include "../../src/Resources/ResourceManager.h"
+#include <array>
+#include <memory>
+
+namespace Render
+{
+	class Sprite;
+}
+namespace Physics
+{
+	struct Collider;
+	struct AABB;
+}
 
 class BrickWall : public IGameObject
 {
@@ -56,12 +65,15 @@ public:
 	//std::shared_ptr<BrickWall> operator=(BrickWall*);
 
 	virtual void render() const override;
-	virtual void update(const double delta) override;
+	static EBrickState getBrickStateAfterCollision(const EBrickState, const Physics::ECollisionDirection);
+	static Physics::AABB getAABBforBrickState(const EBrickLocation, const EBrickState, const glm::vec2&);
+	void onCollisionCallback(const EBrickLocation, const IGameObject&, const Physics::ECollisionDirection);
 
 private:
 	void renderBrick(const EBrickLocation) const;
 
-	std::array<EBrickState, 4> m_pCurrentBrickState;
+	std::array<Physics::Collider*, 4> m_brickLocationToColliderMap;
+	std::array<EBrickState, 4> m_eCurrentBrickState;
 	std::array<std::shared_ptr<Render::Sprite>, 15> m_sprites;
 	std::array<glm::vec2, 4> m_blockOffsets;
 };

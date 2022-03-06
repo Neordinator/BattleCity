@@ -1,24 +1,8 @@
 #pragma once
 
-#ifndef IGAMEOBJECT_H
-#define IGAMEOBJECT_H
-
 #include <glm/vec2.hpp>
 
-#include <vector>
-#include <memory>
-
-namespace Physics
-{
-	struct AABB /*Axis Aligned Bounding Box*/
-	{
-	public:
-		AABB(const glm::vec2 _bottomLeft, const glm::vec2 _topRight) : bottomLeft(_bottomLeft), topRight(_topRight)
-		{}
-		glm::vec2 bottomLeft;
-		glm::vec2 topRight;
-	};
-}
+#include "../../Physics/PhysicsEngine.h"
 
 class IGameObject
 {
@@ -37,7 +21,7 @@ public:
 
 		Unknown
 	};
-	IGameObject(const EObjectType, const glm::vec2&, const glm::vec2&, const float, const float);
+	IGameObject(const EObjectType, const glm::vec2 &, const glm::vec2 &, const float, const float);
 	virtual ~IGameObject();
 
 	virtual void render() const = 0;
@@ -48,7 +32,7 @@ public:
 	virtual void setVelocity(const double);
 
 public:
-	const std::vector<Physics::AABB>& getColliders() const;
+	const std::vector<Physics::Collider>& getColliders() const;
 	const glm::vec2& getSIze() const;
 	EObjectType getObjectType() const;
 	virtual bool collides(const EObjectType);
@@ -62,6 +46,5 @@ protected:
 	double m_velocity;
 	float m_rotation;
 	float m_layer;
-	std::vector<Physics::AABB> m_colliders;
+	std::vector<Physics::Collider> m_colliders;
 };
-#endif // IGAMEOBJECT_H

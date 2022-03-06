@@ -362,9 +362,24 @@
         "greenPanzer8Right1",
         "greenPanzer8Right2"
       ]
+    },
+    {
+      "atlasName": "menu_128x64",
+      "filePath": "res/textures/menu_128x64.png",
+      "subTextureWidth": 128,
+      "subTextureHeight": 64,
+      "subTextures": [
+        "menu"
+      ]
     }
   ],
   "sprites": [
+    {
+      "name": "menu",
+      "textureAtlas": "menu_128x64",
+      "shader": "spriteShader",
+      "initialSubTexture": "menu"
+    },
     {
       "name": "brickWall_all",
       "textureAtlas": "mapTextureAtlas_8x8",
@@ -591,15 +606,15 @@
       "frames": [
         {
           "subTexture": "explosion1",
-          "duration": 150
+          "duration": 100
         },
         {
           "subTexture": "explosion2",
-          "duration": 150
+          "duration": 100
         },
         {
           "subTexture": "explosion3",
-          "duration": 150
+          "duration": 100
         }
       ]
     },
@@ -668,6 +683,1990 @@
       ]
     },
     {
+      "name": "yellowPanzer2_top",
+      "textureAtlas": "panzersTextureAtlas",
+      "shader": "spriteShader",
+      "initialSubTexture": "yellowPanzer2Top1",
+      "frames": [
+        {
+          "subTexture": "yellowPanzer2Top1",
+          "duration": 500
+        },
+        {
+          "subTexture": "yellowPanzer2Top2",
+          "duration": 500
+        }
+      ]
+    },
+    {
+      "name": "yellowPanzer2_left",
+      "textureAtlas": "panzersTextureAtlas",
+      "shader": "spriteShader",
+      "initialSubTexture": "yellowPanzer2Left1",
+      "frames": [
+        {
+          "subTexture": "yellowPanzer2Left1",
+          "duration": 500
+        },
+        {
+          "subTexture": "yellowPanzer2Left2",
+          "duration": 500
+        }
+      ]
+    },
+    {
+      "name": "yellowPanzer2_bottom",
+      "textureAtlas": "panzersTextureAtlas",
+      "shader": "spriteShader",
+      "initialSubTexture": "yellowPanzer2Bottom1",
+      "frames": [
+        {
+          "subTexture": "yellowPanzer2Bottom1",
+          "duration": 500
+        },
+        {
+          "subTexture": "yellowPanzer2Bottom2",
+          "duration": 500
+        }
+      ]
+    },
+    {
+      "name": "yellowPanzer2_right",
+      "textureAtlas": "panzersTextureAtlas",
+      "shader": "spriteShader",
+      "initialSubTexture": "yellowPanzer2Right1",
+      "frames": [
+        {
+          "subTexture": "yellowPanzer2Right1",
+          "duration": 500
+        },
+        {
+          "subTexture": "yellowPanzer2Right2",
+          "duration": 500
+        }
+      ]
+    },
+    {
+      "name": "yellowPanzer3_top",
+      "textureAtlas": "panzersTextureAtlas",
+      "shader": "spriteShader",
+      "initialSubTexture": "yellowPanzer3Top1",
+      "frames": [
+        {
+          "subTexture": "yellowPanzer3Top1",
+          "duration": 500
+        },
+        {
+          "subTexture": "yellowPanzer3Top2",
+          "duration": 500
+        }
+      ]
+    },
+    {
+      "name": "yellowPanzer3_left",
+      "textureAtlas": "panzersTextureAtlas",
+      "shader": "spriteShader",
+      "initialSubTexture": "yellowPanzer3Left1",
+      "frames": [
+        {
+          "subTexture": "yellowPanzer3Left1",
+          "duration": 500
+        },
+        {
+          "subTexture": "yellowPanzer3Left2",
+          "duration": 500
+        }
+      ]
+    },
+    {
+      "name": "yellowPanzer3_bottom",
+      "textureAtlas": "panzersTextureAtlas",
+      "shader": "spriteShader",
+      "initialSubTexture": "yellowPanzer3Bottom1",
+      "frames": [
+        {
+          "subTexture": "yellowPanzer3Bottom1",
+          "duration": 500
+        },
+        {
+          "subTexture": "yellowPanzer3Bottom2",
+          "duration": 500
+        }
+      ]
+    },
+    {
+      "name": "yellowPanzer3_right",
+      "textureAtlas": "panzersTextureAtlas",
+      "shader": "spriteShader",
+      "initialSubTexture": "yellowPanzer3Right1",
+      "frames": [
+        {
+          "subTexture": "yellowPanzer3Right1",
+          "duration": 500
+        },
+        {
+          "subTexture": "yellowPanzer3Right2",
+          "duration": 500
+        }
+      ]
+    },
+    {
+      "name": "yellowPanzer4_top",
+      "textureAtlas": "panzersTextureAtlas",
+      "shader": "spriteShader",
+      "initialSubTexture": "yellowPanzer4Top1",
+      "frames": [
+        {
+          "subTexture": "yellowPanzer4Top1",
+          "duration": 500
+        },
+        {
+          "subTexture": "yellowPanzer4Top2",
+          "duration": 500
+        }
+      ]
+    },
+    {
+      "name": "yellowPanzer4_left",
+      "textureAtlas": "panzersTextureAtlas",
+      "shader": "spriteShader",
+      "initialSubTexture": "yellowPanzer4Left1",
+      "frames": [
+        {
+          "subTexture": "yellowPanzer4Left1",
+          "duration": 500
+        },
+        {
+          "subTexture": "yellowPanzer4Left2",
+          "duration": 500
+        }
+      ]
+    },
+    {
+      "name": "yellowPanzer4_bottom",
+      "textureAtlas": "panzersTextureAtlas",
+      "shader": "spriteShader",
+      "initialSubTexture": "yellowPanzer4Bottom1",
+      "frames": [
+        {
+          "subTexture": "yellowPanzer4Bottom1",
+          "duration": 500
+        },
+        {
+          "subTexture": "yellowPanzer4Bottom2",
+          "duration": 500
+        }
+      ]
+    },
+    {
+      "name": "yellowPanzer4_right",
+      "textureAtlas": "panzersTextureAtlas",
+      "shader": "spriteShader",
+      "initialSubTexture": "yellowPanzer4Right1",
+      "frames": [
+        {
+          "subTexture": "yellowPanzer4Right1",
+          "duration": 500
+        },
+        {
+          "subTexture": "yellowPanzer4Right2",
+          "duration": 500
+        }
+      ]
+    },
+    {
+      "name": "yellowPanzer5_top",
+      "textureAtlas": "panzersTextureAtlas",
+      "shader": "spriteShader",
+      "initialSubTexture": "yellowPanzer5Top1",
+      "frames": [
+        {
+          "subTexture": "yellowPanzer5Top1",
+          "duration": 500
+        },
+        {
+          "subTexture": "yellowPanzer5Top2",
+          "duration": 500
+        }
+      ]
+    },
+    {
+      "name": "yellowPanzer5_left",
+      "textureAtlas": "panzersTextureAtlas",
+      "shader": "spriteShader",
+      "initialSubTexture": "yellowPanzer5Left1",
+      "frames": [
+        {
+          "subTexture": "yellowPanzer5Left1",
+          "duration": 500
+        },
+        {
+          "subTexture": "yellowPanzer5Left2",
+          "duration": 500
+        }
+      ]
+    },
+    {
+      "name": "yellowPanzer5_bottom",
+      "textureAtlas": "panzersTextureAtlas",
+      "shader": "spriteShader",
+      "initialSubTexture": "yellowPanzer5Bottom1",
+      "frames": [
+        {
+          "subTexture": "yellowPanzer5Bottom1",
+          "duration": 500
+        },
+        {
+          "subTexture": "yellowPanzer5Bottom2",
+          "duration": 500
+        }
+      ]
+    },
+    {
+      "name": "yellowPanzer5_right",
+      "textureAtlas": "panzersTextureAtlas",
+      "shader": "spriteShader",
+      "initialSubTexture": "yellowPanzer5Right1",
+      "frames": [
+        {
+          "subTexture": "yellowPanzer5Right1",
+          "duration": 500
+        },
+        {
+          "subTexture": "yellowPanzer5Right2",
+          "duration": 500
+        }
+      ]
+    },
+    {
+      "name": "yellowPanzer6_top",
+      "textureAtlas": "panzersTextureAtlas",
+      "shader": "spriteShader",
+      "initialSubTexture": "yellowPanzer6Top1",
+      "frames": [
+        {
+          "subTexture": "yellowPanzer6Top1",
+          "duration": 500
+        },
+        {
+          "subTexture": "yellowPanzer6Top2",
+          "duration": 500
+        }
+      ]
+    },
+    {
+      "name": "yellowPanzer6_left",
+      "textureAtlas": "panzersTextureAtlas",
+      "shader": "spriteShader",
+      "initialSubTexture": "yellowPanzer6Left1",
+      "frames": [
+        {
+          "subTexture": "yellowPanzer6Left1",
+          "duration": 500
+        },
+        {
+          "subTexture": "yellowPanzer6Left2",
+          "duration": 500
+        }
+      ]
+    },
+    {
+      "name": "yellowPanzer6_bottom",
+      "textureAtlas": "panzersTextureAtlas",
+      "shader": "spriteShader",
+      "initialSubTexture": "yellowPanzer6Bottom1",
+      "frames": [
+        {
+          "subTexture": "yellowPanzer6Bottom1",
+          "duration": 500
+        },
+        {
+          "subTexture": "yellowPanzer6Bottom2",
+          "duration": 500
+        }
+      ]
+    },
+    {
+      "name": "yellowPanzer6_right",
+      "textureAtlas": "panzersTextureAtlas",
+      "shader": "spriteShader",
+      "initialSubTexture": "yellowPanzer6Right1",
+      "frames": [
+        {
+          "subTexture": "yellowPanzer6Right1",
+          "duration": 500
+        },
+        {
+          "subTexture": "yellowPanzer6Right2",
+          "duration": 500
+        }
+      ]
+    },
+    {
+      "name": "yellowPanzer7_top",
+      "textureAtlas": "panzersTextureAtlas",
+      "shader": "spriteShader",
+      "initialSubTexture": "yellowPanzer7Top1",
+      "frames": [
+        {
+          "subTexture": "yellowPanzer7Top1",
+          "duration": 500
+        },
+        {
+          "subTexture": "yellowPanzer7Top2",
+          "duration": 500
+        }
+      ]
+    },
+    {
+      "name": "yellowPanzer7_left",
+      "textureAtlas": "panzersTextureAtlas",
+      "shader": "spriteShader",
+      "initialSubTexture": "yellowPanzer7Left1",
+      "frames": [
+        {
+          "subTexture": "yellowPanzer7Left1",
+          "duration": 500
+        },
+        {
+          "subTexture": "yellowPanzer7Left2",
+          "duration": 500
+        }
+      ]
+    },
+    {
+      "name": "yellowPanzer7_bottom",
+      "textureAtlas": "panzersTextureAtlas",
+      "shader": "spriteShader",
+      "initialSubTexture": "yellowPanzer7Bottom1",
+      "frames": [
+        {
+          "subTexture": "yellowPanzer7Bottom1",
+          "duration": 500
+        },
+        {
+          "subTexture": "yellowPanzer7Bottom2",
+          "duration": 500
+        }
+      ]
+    },
+    {
+      "name": "yellowPanzer7_right",
+      "textureAtlas": "panzersTextureAtlas",
+      "shader": "spriteShader",
+      "initialSubTexture": "yellowPanzer7Right1",
+      "frames": [
+        {
+          "subTexture": "yellowPanzer7Right1",
+          "duration": 500
+        },
+        {
+          "subTexture": "yellowPanzer7Right2",
+          "duration": 500
+        }
+      ]
+    },
+    {
+      "name": "yellowPanzer8_top",
+      "textureAtlas": "panzersTextureAtlas",
+      "shader": "spriteShader",
+      "initialSubTexture": "yellowPanzer8Top1",
+      "frames": [
+        {
+          "subTexture": "yellowPanzer8Top1",
+          "duration": 500
+        },
+        {
+          "subTexture": "yellowPanzer8Top2",
+          "duration": 500
+        }
+      ]
+    },
+    {
+      "name": "yellowPanzer8_left",
+      "textureAtlas": "panzersTextureAtlas",
+      "shader": "spriteShader",
+      "initialSubTexture": "yellowPanzer8Left1",
+      "frames": [
+        {
+          "subTexture": "yellowPanzer8Left1",
+          "duration": 500
+        },
+        {
+          "subTexture": "yellowPanzer8Left2",
+          "duration": 500
+        }
+      ]
+    },
+    {
+      "name": "yellowPanzer8_bottom",
+      "textureAtlas": "panzersTextureAtlas",
+      "shader": "spriteShader",
+      "initialSubTexture": "yellowPanzer8Bottom1",
+      "frames": [
+        {
+          "subTexture": "yellowPanzer8Bottom1",
+          "duration": 500
+        },
+        {
+          "subTexture": "yellowPanzer8Bottom2",
+          "duration": 500
+        }
+      ]
+    },
+    {
+      "name": "yellowPanzer8_right",
+      "textureAtlas": "panzersTextureAtlas",
+      "shader": "spriteShader",
+      "initialSubTexture": "yellowPanzer8Right1",
+      "frames": [
+        {
+          "subTexture": "yellowPanzer8Right1",
+          "duration": 500
+        },
+        {
+          "subTexture": "yellowPanzer8Right2",
+          "duration": 500
+        }
+      ]
+    },
+    {
+      "name": "grayPanzer1_top",
+      "textureAtlas": "panzersTextureAtlas",
+      "shader": "spriteShader",
+      "initialSubTexture": "grayPanzer1Top1",
+      "frames": [
+        {
+          "subTexture": "grayPanzer1Top1",
+          "duration": 500
+        },
+        {
+          "subTexture": "grayPanzer1Top2",
+          "duration": 500
+        }
+      ]
+    },
+    {
+      "name": "grayPanzer1_left",
+      "textureAtlas": "panzersTextureAtlas",
+      "shader": "spriteShader",
+      "initialSubTexture": "grayPanzer1Left1",
+      "frames": [
+        {
+          "subTexture": "grayPanzer1Left1",
+          "duration": 500
+        },
+        {
+          "subTexture": "grayPanzer1Left2",
+          "duration": 500
+        }
+      ]
+    },
+    {
+      "name": "grayPanzer1_bottom",
+      "textureAtlas": "panzersTextureAtlas",
+      "shader": "spriteShader",
+      "initialSubTexture": "grayPanzer1Bottom1",
+      "frames": [
+        {
+          "subTexture": "grayPanzer1Bottom1",
+          "duration": 500
+        },
+        {
+          "subTexture": "grayPanzer1Bottom2",
+          "duration": 500
+        }
+      ]
+    },
+    {
+      "name": "grayPanzer1_right",
+      "textureAtlas": "panzersTextureAtlas",
+      "shader": "spriteShader",
+      "initialSubTexture": "grayPanzer1Right1",
+      "frames": [
+        {
+          "subTexture": "grayPanzer1Right1",
+          "duration": 500
+        },
+        {
+          "subTexture": "grayPanzer1Right2",
+          "duration": 500
+        }
+      ]
+    },
+    {
+      "name": "grayPanzer2_top",
+      "textureAtlas": "panzersTextureAtlas",
+      "shader": "spriteShader",
+      "initialSubTexture": "grayPanzer2Top1",
+      "frames": [
+        {
+          "subTexture": "grayPanzer2Top1",
+          "duration": 500
+        },
+        {
+          "subTexture": "grayPanzer2Top2",
+          "duration": 500
+        }
+      ]
+    },
+    {
+      "name": "grayPanzer2_left",
+      "textureAtlas": "panzersTextureAtlas",
+      "shader": "spriteShader",
+      "initialSubTexture": "grayPanzer2Left1",
+      "frames": [
+        {
+          "subTexture": "grayPanzer2Left1",
+          "duration": 500
+        },
+        {
+          "subTexture": "grayPanzer2Left2",
+          "duration": 500
+        }
+      ]
+    },
+    {
+      "name": "grayPanzer2_bottom",
+      "textureAtlas": "panzersTextureAtlas",
+      "shader": "spriteShader",
+      "initialSubTexture": "grayPanzer2Bottom1",
+      "frames": [
+        {
+          "subTexture": "grayPanzer2Bottom1",
+          "duration": 500
+        },
+        {
+          "subTexture": "grayPanzer2Bottom2",
+          "duration": 500
+        }
+      ]
+    },
+    {
+      "name": "grayPanzer2_right",
+      "textureAtlas": "panzersTextureAtlas",
+      "shader": "spriteShader",
+      "initialSubTexture": "grayPanzer2Right1",
+      "frames": [
+        {
+          "subTexture": "grayPanzer2Right1",
+          "duration": 500
+        },
+        {
+          "subTexture": "grayPanzer2Right2",
+          "duration": 500
+        }
+      ]
+    },
+    {
+      "name": "grayPanzer3_top",
+      "textureAtlas": "panzersTextureAtlas",
+      "shader": "spriteShader",
+      "initialSubTexture": "grayPanzer3Top1",
+      "frames": [
+        {
+          "subTexture": "grayPanzer3Top1",
+          "duration": 500
+        },
+        {
+          "subTexture": "grayPanzer3Top2",
+          "duration": 500
+        }
+      ]
+    },
+    {
+      "name": "grayPanzer3_left",
+      "textureAtlas": "panzersTextureAtlas",
+      "shader": "spriteShader",
+      "initialSubTexture": "grayPanzer3Left1",
+      "frames": [
+        {
+          "subTexture": "grayPanzer3Left1",
+          "duration": 500
+        },
+        {
+          "subTexture": "grayPanzer3Left2",
+          "duration": 500
+        }
+      ]
+    },
+    {
+      "name": "grayPanzer3_bottom",
+      "textureAtlas": "panzersTextureAtlas",
+      "shader": "spriteShader",
+      "initialSubTexture": "grayPanzer3Bottom1",
+      "frames": [
+        {
+          "subTexture": "grayPanzer3Bottom1",
+          "duration": 500
+        },
+        {
+          "subTexture": "grayPanzer3Bottom2",
+          "duration": 500
+        }
+      ]
+    },
+    {
+      "name": "grayPanzer3_right",
+      "textureAtlas": "panzersTextureAtlas",
+      "shader": "spriteShader",
+      "initialSubTexture": "grayPanzer3Right1",
+      "frames": [
+        {
+          "subTexture": "grayPanzer3Right1",
+          "duration": 500
+        },
+        {
+          "subTexture": "grayPanzer3Right2",
+          "duration": 500
+        }
+      ]
+    },
+    {
+      "name": "grayPanzer4_top",
+      "textureAtlas": "panzersTextureAtlas",
+      "shader": "spriteShader",
+      "initialSubTexture": "grayPanzer4Top1",
+      "frames": [
+        {
+          "subTexture": "grayPanzer4Top1",
+          "duration": 500
+        },
+        {
+          "subTexture": "grayPanzer4Top2",
+          "duration": 500
+        }
+      ]
+    },
+    {
+      "name": "grayPanzer4_left",
+      "textureAtlas": "panzersTextureAtlas",
+      "shader": "spriteShader",
+      "initialSubTexture": "grayPanzer4Left1",
+      "frames": [
+        {
+          "subTexture": "grayPanzer4Left1",
+          "duration": 500
+        },
+        {
+          "subTexture": "grayPanzer4Left2",
+          "duration": 500
+        }
+      ]
+    },
+    {
+      "name": "grayPanzer4_bottom",
+      "textureAtlas": "panzersTextureAtlas",
+      "shader": "spriteShader",
+      "initialSubTexture": "grayPanzer4Bottom1",
+      "frames": [
+        {
+          "subTexture": "grayPanzer4Bottom1",
+          "duration": 500
+        },
+        {
+          "subTexture": "grayPanzer4Bottom2",
+          "duration": 500
+        }
+      ]
+    },
+    {
+      "name": "grayPanzer4_right",
+      "textureAtlas": "panzersTextureAtlas",
+      "shader": "spriteShader",
+      "initialSubTexture": "grayPanzer4Right1",
+      "frames": [
+        {
+          "subTexture": "grayPanzer4Right1",
+          "duration": 500
+        },
+        {
+          "subTexture": "grayPanzer4Right2",
+          "duration": 500
+        }
+      ]
+    },
+    {
+      "name": "grayPanzer5_top",
+      "textureAtlas": "panzersTextureAtlas",
+      "shader": "spriteShader",
+      "initialSubTexture": "grayPanzer5Top1",
+      "frames": [
+        {
+          "subTexture": "grayPanzer5Top1",
+          "duration": 500
+        },
+        {
+          "subTexture": "grayPanzer5Top2",
+          "duration": 500
+        }
+      ]
+    },
+    {
+      "name": "grayPanzer5_left",
+      "textureAtlas": "panzersTextureAtlas",
+      "shader": "spriteShader",
+      "initialSubTexture": "grayPanzer5Left1",
+      "frames": [
+        {
+          "subTexture": "grayPanzer5Left1",
+          "duration": 500
+        },
+        {
+          "subTexture": "grayPanzer5Left2",
+          "duration": 500
+        }
+      ]
+    },
+    {
+      "name": "grayPanzer5_bottom",
+      "textureAtlas": "panzersTextureAtlas",
+      "shader": "spriteShader",
+      "initialSubTexture": "grayPanzer5Bottom1",
+      "frames": [
+        {
+          "subTexture": "grayPanzer5Bottom1",
+          "duration": 500
+        },
+        {
+          "subTexture": "grayPanzer5Bottom2",
+          "duration": 500
+        }
+      ]
+    },
+    {
+      "name": "grayPanzer5_right",
+      "textureAtlas": "panzersTextureAtlas",
+      "shader": "spriteShader",
+      "initialSubTexture": "grayPanzer5Right1",
+      "frames": [
+        {
+          "subTexture": "grayPanzer5Right1",
+          "duration": 500
+        },
+        {
+          "subTexture": "yellowPanzer5Right2",
+          "duration": 500
+        }
+      ]
+    },
+    {
+      "name": "grayPanzer6_top",
+      "textureAtlas": "panzersTextureAtlas",
+      "shader": "spriteShader",
+      "initialSubTexture": "grayPanzer6Top1",
+      "frames": [
+        {
+          "subTexture": "grayPanzer6Top1",
+          "duration": 500
+        },
+        {
+          "subTexture": "grayPanzer6Top2",
+          "duration": 500
+        }
+      ]
+    },
+    {
+      "name": "grayPanzer6_left",
+      "textureAtlas": "panzersTextureAtlas",
+      "shader": "spriteShader",
+      "initialSubTexture": "grayPanzer6Left1",
+      "frames": [
+        {
+          "subTexture": "grayPanzer6Left1",
+          "duration": 500
+        },
+        {
+          "subTexture": "grayPanzer6Left2",
+          "duration": 500
+        }
+      ]
+    },
+    {
+      "name": "grayPanzer6_bottom",
+      "textureAtlas": "panzersTextureAtlas",
+      "shader": "spriteShader",
+      "initialSubTexture": "grayPanzer6Bottom1",
+      "frames": [
+        {
+          "subTexture": "grayPanzer6Bottom1",
+          "duration": 500
+        },
+        {
+          "subTexture": "grayPanzer6Bottom2",
+          "duration": 500
+        }
+      ]
+    },
+    {
+      "name": "grayPanzer6_right",
+      "textureAtlas": "panzersTextureAtlas",
+      "shader": "spriteShader",
+      "initialSubTexture": "grayPanzer6Right1",
+      "frames": [
+        {
+          "subTexture": "grayPanzer6Right1",
+          "duration": 500
+        },
+        {
+          "subTexture": "grayPanzer6Right2",
+          "duration": 500
+        }
+      ]
+    },
+    {
+      "name": "grayPanzer7_top",
+      "textureAtlas": "panzersTextureAtlas",
+      "shader": "spriteShader",
+      "initialSubTexture": "grayPanzer7Top1",
+      "frames": [
+        {
+          "subTexture": "grayPanzer7Top1",
+          "duration": 500
+        },
+        {
+          "subTexture": "grayPanzer7Top2",
+          "duration": 500
+        }
+      ]
+    },
+    {
+      "name": "grayPanzer7_left",
+      "textureAtlas": "panzersTextureAtlas",
+      "shader": "spriteShader",
+      "initialSubTexture": "grayPanzer7Left1",
+      "frames": [
+        {
+          "subTexture": "grayPanzer7Left1",
+          "duration": 500
+        },
+        {
+          "subTexture": "grayPanzer7Left2",
+          "duration": 500
+        }
+      ]
+    },
+    {
+      "name": "grayPanzer7_bottom",
+      "textureAtlas": "panzersTextureAtlas",
+      "shader": "spriteShader",
+      "initialSubTexture": "grayPanzer7Bottom1",
+      "frames": [
+        {
+          "subTexture": "grayPanzer7Bottom1",
+          "duration": 500
+        },
+        {
+          "subTexture": "grayPanzer7Bottom2",
+          "duration": 500
+        }
+      ]
+    },
+    {
+      "name": "grayPanzer7_right",
+      "textureAtlas": "panzersTextureAtlas",
+      "shader": "spriteShader",
+      "initialSubTexture": "grayPanzer7Right1",
+      "frames": [
+        {
+          "subTexture": "grayPanzer7Right1",
+          "duration": 500
+        },
+        {
+          "subTexture": "grayPanzer7Right2",
+          "duration": 500
+        }
+      ]
+    },
+    {
+      "name": "grayPanzer8_top",
+      "textureAtlas": "panzersTextureAtlas",
+      "shader": "spriteShader",
+      "initialSubTexture": "grayPanzer8Top1",
+      "frames": [
+        {
+          "subTexture": "grayPanzer8Top1",
+          "duration": 500
+        },
+        {
+          "subTexture": "grayPanzer8Top2",
+          "duration": 500
+        }
+      ]
+    },
+    {
+      "name": "grayPanzer8_left",
+      "textureAtlas": "panzersTextureAtlas",
+      "shader": "spriteShader",
+      "initialSubTexture": "grayPanzer8Left1",
+      "frames": [
+        {
+          "subTexture": "grayPanzer8Left1",
+          "duration": 500
+        },
+        {
+          "subTexture": "grayPanzer8Left2",
+          "duration": 500
+        }
+      ]
+    },
+    {
+      "name": "grayPanzer8_bottom",
+      "textureAtlas": "panzersTextureAtlas",
+      "shader": "spriteShader",
+      "initialSubTexture": "grayPanzer8Bottom1",
+      "frames": [
+        {
+          "subTexture": "grayPanzer8Bottom1",
+          "duration": 500
+        },
+        {
+          "subTexture": "grayPanzer8Bottom2",
+          "duration": 500
+        }
+      ]
+    },
+    {
+      "name": "grayPanzer8_right",
+      "textureAtlas": "panzersTextureAtlas",
+      "shader": "spriteShader",
+      "initialSubTexture": "grayPanzer8Right1",
+      "frames": [
+        {
+          "subTexture": "grayPanzer8Right1",
+          "duration": 500
+        },
+        {
+          "subTexture": "grayPanzer8Right2",
+          "duration": 500
+        }
+      ]
+    },
+    {
+      "name": "greenPanzer1_top",
+      "textureAtlas": "panzersTextureAtlas",
+      "shader": "spriteShader",
+      "initialSubTexture": "greenPanzer1Top1",
+      "frames": [
+        {
+          "subTexture": "greenPanzer1Top1",
+          "duration": 500
+        },
+        {
+          "subTexture": "greenPanzer1Top2",
+          "duration": 500
+        }
+      ]
+    },
+    {
+      "name": "greenPanzer1_left",
+      "textureAtlas": "panzersTextureAtlas",
+      "shader": "spriteShader",
+      "initialSubTexture": "greenPanzer1Left1",
+      "frames": [
+        {
+          "subTexture": "greenPanzer1Left1",
+          "duration": 500
+        },
+        {
+          "subTexture": "greenPanzer1Left2",
+          "duration": 500
+        }
+      ]
+    },
+    {
+      "name": "greenPanzer1_bottom",
+      "textureAtlas": "panzersTextureAtlas",
+      "shader": "spriteShader",
+      "initialSubTexture": "greenPanzer1Bottom1",
+      "frames": [
+        {
+          "subTexture": "greenPanzer1Bottom1",
+          "duration": 500
+        },
+        {
+          "subTexture": "greenPanzer1Bottom2",
+          "duration": 500
+        }
+      ]
+    },
+    {
+      "name": "greenPanzer1_right",
+      "textureAtlas": "panzersTextureAtlas",
+      "shader": "spriteShader",
+      "initialSubTexture": "greenPanzer1Right1",
+      "frames": [
+        {
+          "subTexture": "greenPanzer1Right1",
+          "duration": 500
+        },
+        {
+          "subTexture": "greenPanzer1Right2",
+          "duration": 500
+        }
+      ]
+    },
+    {
+      "name": "greenPanzer2_top",
+      "textureAtlas": "panzersTextureAtlas",
+      "shader": "spriteShader",
+      "initialSubTexture": "greenPanzer2Top1",
+      "frames": [
+        {
+          "subTexture": "greenPanzer2Top1",
+          "duration": 500
+        },
+        {
+          "subTexture": "greenPanzer2Top2",
+          "duration": 500
+        }
+      ]
+    },
+    {
+      "name": "greenPanzer2_left",
+      "textureAtlas": "panzersTextureAtlas",
+      "shader": "spriteShader",
+      "initialSubTexture": "greenPanzer2Left1",
+      "frames": [
+        {
+          "subTexture": "greenPanzer2Left1",
+          "duration": 500
+        },
+        {
+          "subTexture": "greenPanzer2Left2",
+          "duration": 500
+        }
+      ]
+    },
+    {
+      "name": "greenPanzer2_bottom",
+      "textureAtlas": "panzersTextureAtlas",
+      "shader": "spriteShader",
+      "initialSubTexture": "greenPanzer2Bottom1",
+      "frames": [
+        {
+          "subTexture": "greenPanzer2Bottom1",
+          "duration": 500
+        },
+        {
+          "subTexture": "greenPanzer2Bottom2",
+          "duration": 500
+        }
+      ]
+    },
+    {
+      "name": "greenPanzer2_right",
+      "textureAtlas": "panzersTextureAtlas",
+      "shader": "spriteShader",
+      "initialSubTexture": "greenPanzer2Right1",
+      "frames": [
+        {
+          "subTexture": "greenPanzer2Right1",
+          "duration": 500
+        },
+        {
+          "subTexture": "greenPanzer2Right2",
+          "duration": 500
+        }
+      ]
+    },
+    {
+      "name": "greenPanzer3_top",
+      "textureAtlas": "panzersTextureAtlas",
+      "shader": "spriteShader",
+      "initialSubTexture": "greenPanzer3Top1",
+      "frames": [
+        {
+          "subTexture": "greenPanzer3Top1",
+          "duration": 500
+        },
+        {
+          "subTexture": "greenPanzer3Top2",
+          "duration": 500
+        }
+      ]
+    },
+    {
+      "name": "greenPanzer3_left",
+      "textureAtlas": "panzersTextureAtlas",
+      "shader": "spriteShader",
+      "initialSubTexture": "greenPanzer3Left1",
+      "frames": [
+        {
+          "subTexture": "greenPanzer3Left1",
+          "duration": 500
+        },
+        {
+          "subTexture": "greenPanzer3Left2",
+          "duration": 500
+        }
+      ]
+    },
+    {
+      "name": "greenPanzer3_bottom",
+      "textureAtlas": "panzersTextureAtlas",
+      "shader": "spriteShader",
+      "initialSubTexture": "greenPanzer3Bottom1",
+      "frames": [
+        {
+          "subTexture": "greenPanzer3Bottom1",
+          "duration": 500
+        },
+        {
+          "subTexture": "greenPanzer3Bottom2",
+          "duration": 500
+        }
+      ]
+    },
+    {
+      "name": "greenPanzer3_right",
+      "textureAtlas": "panzersTextureAtlas",
+      "shader": "spriteShader",
+      "initialSubTexture": "greenPanzer3Right1",
+      "frames": [
+        {
+          "subTexture": "greenPanzer3Right1",
+          "duration": 500
+        },
+        {
+          "subTexture": "greenPanzer3Right2",
+          "duration": 500
+        }
+      ]
+    },
+    {
+      "name": "greenPanzer4_top",
+      "textureAtlas": "panzersTextureAtlas",
+      "shader": "spriteShader",
+      "initialSubTexture": "greenPanzer4Top1",
+      "frames": [
+        {
+          "subTexture": "greenPanzer4Top1",
+          "duration": 500
+        },
+        {
+          "subTexture": "greenPanzer4Top2",
+          "duration": 500
+        }
+      ]
+    },
+    {
+      "name": "greenPanzer4_left",
+      "textureAtlas": "panzersTextureAtlas",
+      "shader": "spriteShader",
+      "initialSubTexture": "greenPanzer4Left1",
+      "frames": [
+        {
+          "subTexture": "greenPanzer4Left1",
+          "duration": 500
+        },
+        {
+          "subTexture": "greenPanzer4Left2",
+          "duration": 500
+        }
+      ]
+    },
+    {
+      "name": "greenPanzer4_bottom",
+      "textureAtlas": "panzersTextureAtlas",
+      "shader": "spriteShader",
+      "initialSubTexture": "greenPanzer4Bottom1",
+      "frames": [
+        {
+          "subTexture": "greenPanzer4Bottom1",
+          "duration": 500
+        },
+        {
+          "subTexture": "greenPanzer4Bottom2",
+          "duration": 500
+        }
+      ]
+    },
+    {
+      "name": "greenPanzer4_right",
+      "textureAtlas": "panzersTextureAtlas",
+      "shader": "spriteShader",
+      "initialSubTexture": "greenPanzer4Right1",
+      "frames": [
+        {
+          "subTexture": "greenPanzer4Right1",
+          "duration": 500
+        },
+        {
+          "subTexture": "greenPanzer4Right2",
+          "duration": 500
+        }
+      ]
+    },
+    {
+      "name": "greenPanzer5_top",
+      "textureAtlas": "panzersTextureAtlas",
+      "shader": "spriteShader",
+      "initialSubTexture": "greenPanzer5Top1",
+      "frames": [
+        {
+          "subTexture": "greenPanzer5Top1",
+          "duration": 500
+        },
+        {
+          "subTexture": "greenPanzer5Top2",
+          "duration": 500
+        }
+      ]
+    },
+    {
+      "name": "greenPanzer5_left",
+      "textureAtlas": "panzersTextureAtlas",
+      "shader": "spriteShader",
+      "initialSubTexture": "greenPanzer5Left1",
+      "frames": [
+        {
+          "subTexture": "greenPanzer5Left1",
+          "duration": 500
+        },
+        {
+          "subTexture": "greenPanzer5Left2",
+          "duration": 500
+        }
+      ]
+    },
+    {
+      "name": "greenPanzer5_bottom",
+      "textureAtlas": "panzersTextureAtlas",
+      "shader": "spriteShader",
+      "initialSubTexture": "greenPanzer5Bottom1",
+      "frames": [
+        {
+          "subTexture": "greenPanzer5Bottom1",
+          "duration": 500
+        },
+        {
+          "subTexture": "greenPanzer5Bottom2",
+          "duration": 500
+        }
+      ]
+    },
+    {
+      "name": "greenPanzer5_right",
+      "textureAtlas": "panzersTextureAtlas",
+      "shader": "spriteShader",
+      "initialSubTexture": "greenPanzer5Right1",
+      "frames": [
+        {
+          "subTexture": "greenPanzer5Right1",
+          "duration": 500
+        },
+        {
+          "subTexture": "greenPanzer5Right2",
+          "duration": 500
+        }
+      ]
+    },
+    {
+      "name": "greenPanzer6_top",
+      "textureAtlas": "panzersTextureAtlas",
+      "shader": "spriteShader",
+      "initialSubTexture": "greenPanzer6Top1",
+      "frames": [
+        {
+          "subTexture": "greenPanzer6Top1",
+          "duration": 500
+        },
+        {
+          "subTexture": "greenPanzer6Top2",
+          "duration": 500
+        }
+      ]
+    },
+    {
+      "name": "greenPanzer6_left",
+      "textureAtlas": "panzersTextureAtlas",
+      "shader": "spriteShader",
+      "initialSubTexture": "greenPanzer6Left1",
+      "frames": [
+        {
+          "subTexture": "greenPanzer6Left1",
+          "duration": 500
+        },
+        {
+          "subTexture": "greenPanzer6Left2",
+          "duration": 500
+        }
+      ]
+    },
+    {
+      "name": "greenPanzer6_bottom",
+      "textureAtlas": "panzersTextureAtlas",
+      "shader": "spriteShader",
+      "initialSubTexture": "greenPanzer6Bottom1",
+      "frames": [
+        {
+          "subTexture": "greenPanzer6Bottom1",
+          "duration": 500
+        },
+        {
+          "subTexture": "greenPanzer6Bottom2",
+          "duration": 500
+        }
+      ]
+    },
+    {
+      "name": "greenPanzer6_right",
+      "textureAtlas": "panzersTextureAtlas",
+      "shader": "spriteShader",
+      "initialSubTexture": "greenPanzer6Right1",
+      "frames": [
+        {
+          "subTexture": "greenPanzer6Right1",
+          "duration": 500
+        },
+        {
+          "subTexture": "greenPanzer6Right2",
+          "duration": 500
+        }
+      ]
+    },
+    {
+      "name": "greenPanzer7_top",
+      "textureAtlas": "panzersTextureAtlas",
+      "shader": "spriteShader",
+      "initialSubTexture": "greenPanzer7Top1",
+      "frames": [
+        {
+          "subTexture": "greenPanzer7Top1",
+          "duration": 500
+        },
+        {
+          "subTexture": "greenPanzer7Top2",
+          "duration": 500
+        }
+      ]
+    },
+    {
+      "name": "greenPanzer7_left",
+      "textureAtlas": "panzersTextureAtlas",
+      "shader": "spriteShader",
+      "initialSubTexture": "greenPanzer7Left1",
+      "frames": [
+        {
+          "subTexture": "greenPanzer7Left1",
+          "duration": 500
+        },
+        {
+          "subTexture": "greenPanzer7Left2",
+          "duration": 500
+        }
+      ]
+    },
+    {
+      "name": "greenPanzer7_bottom",
+      "textureAtlas": "panzersTextureAtlas",
+      "shader": "spriteShader",
+      "initialSubTexture": "greenPanzer7Bottom1",
+      "frames": [
+        {
+          "subTexture": "greenPanzer7Bottom1",
+          "duration": 500
+        },
+        {
+          "subTexture": "greenPanzer7Bottom2",
+          "duration": 500
+        }
+      ]
+    },
+    {
+      "name": "greenPanzer7_right",
+      "textureAtlas": "panzersTextureAtlas",
+      "shader": "spriteShader",
+      "initialSubTexture": "greenPanzer7Right1",
+      "frames": [
+        {
+          "subTexture": "greenPanzer7Right1",
+          "duration": 500
+        },
+        {
+          "subTexture": "greenPanzer7Right2",
+          "duration": 500
+        }
+      ]
+    },
+    {
+      "name": "greenPanzer8_top",
+      "textureAtlas": "panzersTextureAtlas",
+      "shader": "spriteShader",
+      "initialSubTexture": "greenPanzer8Top1",
+      "frames": [
+        {
+          "subTexture": "greenPanzer8Top1",
+          "duration": 500
+        },
+        {
+          "subTexture": "greenPanzer8Top2",
+          "duration": 500
+        }
+      ]
+    },
+    {
+      "name": "greenPanzer8_left",
+      "textureAtlas": "panzersTextureAtlas",
+      "shader": "spriteShader",
+      "initialSubTexture": "greenPanzer8Left1",
+      "frames": [
+        {
+          "subTexture": "greenPanzer8Left1",
+          "duration": 500
+        },
+        {
+          "subTexture": "greenPanzer8Left2",
+          "duration": 500
+        }
+      ]
+    },
+    {
+      "name": "greenPanzer8_bottom",
+      "textureAtlas": "panzersTextureAtlas",
+      "shader": "spriteShader",
+      "initialSubTexture": "greenPanzer8Bottom1",
+      "frames": [
+        {
+          "subTexture": "greenPanzer8Bottom1",
+          "duration": 500
+        },
+        {
+          "subTexture": "greenPanzer8Bottom2",
+          "duration": 500
+        }
+      ]
+    },
+    {
+      "name": "greenPanzer8_right",
+      "textureAtlas": "panzersTextureAtlas",
+      "shader": "spriteShader",
+      "initialSubTexture": "greenPanzer8Right1",
+      "frames": [
+        {
+          "subTexture": "greenPanzer8Right1",
+          "duration": 500
+        },
+        {
+          "subTexture": "greenPanzer8Right2",
+          "duration": 500
+        }
+      ]
+    },
+    {
+      "name": "redPanzer1_top",
+      "textureAtlas": "panzersTextureAtlas",
+      "shader": "spriteShader",
+      "initialSubTexture": "redPanzer1Top1",
+      "frames": [
+        {
+          "subTexture": "redPanzer1Top1",
+          "duration": 500
+        },
+        {
+          "subTexture": "redPanzer1Top2",
+          "duration": 500
+        }
+      ]
+    },
+    {
+      "name": "redPanzer1_left",
+      "textureAtlas": "panzersTextureAtlas",
+      "shader": "spriteShader",
+      "initialSubTexture": "redPanzer1Left1",
+      "frames": [
+        {
+          "subTexture": "redPanzer1Left1",
+          "duration": 500
+        },
+        {
+          "subTexture": "redPanzer1Left2",
+          "duration": 500
+        }
+      ]
+    },
+    {
+      "name": "redPanzer1_bottom",
+      "textureAtlas": "panzersTextureAtlas",
+      "shader": "spriteShader",
+      "initialSubTexture": "redPanzer1Bottom1",
+      "frames": [
+        {
+          "subTexture": "redPanzer1Bottom1",
+          "duration": 500
+        },
+        {
+          "subTexture": "redPanzer1Bottom2",
+          "duration": 500
+        }
+      ]
+    },
+    {
+      "name": "redPanzer1_right",
+      "textureAtlas": "panzersTextureAtlas",
+      "shader": "spriteShader",
+      "initialSubTexture": "redPanzer1Right1",
+      "frames": [
+        {
+          "subTexture": "redPanzer1Right1",
+          "duration": 500
+        },
+        {
+          "subTexture": "redPanzer1Right2",
+          "duration": 500
+        }
+      ]
+    },
+    {
+      "name": "redPanzer2_top",
+      "textureAtlas": "panzersTextureAtlas",
+      "shader": "spriteShader",
+      "initialSubTexture": "redPanzer2Top1",
+      "frames": [
+        {
+          "subTexture": "redPanzer2Top1",
+          "duration": 500
+        },
+        {
+          "subTexture": "redPanzer2Top2",
+          "duration": 500
+        }
+      ]
+    },
+    {
+      "name": "redPanzer2_left",
+      "textureAtlas": "panzersTextureAtlas",
+      "shader": "spriteShader",
+      "initialSubTexture": "redPanzer2Left1",
+      "frames": [
+        {
+          "subTexture": "redPanzer2Left1",
+          "duration": 500
+        },
+        {
+          "subTexture": "redPanzer2Left2",
+          "duration": 500
+        }
+      ]
+    },
+    {
+      "name": "redPanzer2_bottom",
+      "textureAtlas": "panzersTextureAtlas",
+      "shader": "spriteShader",
+      "initialSubTexture": "redPanzer2Bottom1",
+      "frames": [
+        {
+          "subTexture": "redPanzer2Bottom1",
+          "duration": 500
+        },
+        {
+          "subTexture": "redPanzer2Bottom2",
+          "duration": 500
+        }
+      ]
+    },
+    {
+      "name": "redPanzer2_right",
+      "textureAtlas": "panzersTextureAtlas",
+      "shader": "spriteShader",
+      "initialSubTexture": "redPanzer2Right1",
+      "frames": [
+        {
+          "subTexture": "redPanzer2Right1",
+          "duration": 500
+        },
+        {
+          "subTexture": "redPanzer2Right2",
+          "duration": 500
+        }
+      ]
+    },
+    {
+      "name": "redPanzer3_top",
+      "textureAtlas": "panzersTextureAtlas",
+      "shader": "spriteShader",
+      "initialSubTexture": "redPanzer3Top1",
+      "frames": [
+        {
+          "subTexture": "redPanzer3Top1",
+          "duration": 500
+        },
+        {
+          "subTexture": "redPanzer3Top2",
+          "duration": 500
+        }
+      ]
+    },
+    {
+      "name": "redPanzer3_left",
+      "textureAtlas": "panzersTextureAtlas",
+      "shader": "spriteShader",
+      "initialSubTexture": "redPanzer3Left1",
+      "frames": [
+        {
+          "subTexture": "redPanzer3Left1",
+          "duration": 500
+        },
+        {
+          "subTexture": "redPanzer3Left2",
+          "duration": 500
+        }
+      ]
+    },
+    {
+      "name": "redPanzer3_bottom",
+      "textureAtlas": "panzersTextureAtlas",
+      "shader": "spriteShader",
+      "initialSubTexture": "redPanzer3Bottom1",
+      "frames": [
+        {
+          "subTexture": "redPanzer3Bottom1",
+          "duration": 500
+        },
+        {
+          "subTexture": "redPanzer3Bottom2",
+          "duration": 500
+        }
+      ]
+    },
+    {
+      "name": "redPanzer3_right",
+      "textureAtlas": "panzersTextureAtlas",
+      "shader": "spriteShader",
+      "initialSubTexture": "redPanzer3Right1",
+      "frames": [
+        {
+          "subTexture": "redPanzer3Right1",
+          "duration": 500
+        },
+        {
+          "subTexture": "redPanzer3Right2",
+          "duration": 500
+        }
+      ]
+    },
+    {
+      "name": "redPanzer4_top",
+      "textureAtlas": "panzersTextureAtlas",
+      "shader": "spriteShader",
+      "initialSubTexture": "redPanzer4Top1",
+      "frames": [
+        {
+          "subTexture": "redPanzer4Top1",
+          "duration": 500
+        },
+        {
+          "subTexture": "redPanzer4Top2",
+          "duration": 500
+        }
+      ]
+    },
+    {
+      "name": "redPanzer4_left",
+      "textureAtlas": "panzersTextureAtlas",
+      "shader": "spriteShader",
+      "initialSubTexture": "redPanzer4Left1",
+      "frames": [
+        {
+          "subTexture": "redPanzer4Left1",
+          "duration": 500
+        },
+        {
+          "subTexture": "redPanzer4Left2",
+          "duration": 500
+        }
+      ]
+    },
+    {
+      "name": "redPanzer4_bottom",
+      "textureAtlas": "panzersTextureAtlas",
+      "shader": "spriteShader",
+      "initialSubTexture": "redPanzer4Bottom1",
+      "frames": [
+        {
+          "subTexture": "redPanzer4Bottom1",
+          "duration": 500
+        },
+        {
+          "subTexture": "redPanzer4Bottom2",
+          "duration": 500
+        }
+      ]
+    },
+    {
+      "name": "redPanzer4_right",
+      "textureAtlas": "panzersTextureAtlas",
+      "shader": "spriteShader",
+      "initialSubTexture": "redPanzer4Right1",
+      "frames": [
+        {
+          "subTexture": "redPanzer4Right1",
+          "duration": 500
+        },
+        {
+          "subTexture": "redPanzer4Right2",
+          "duration": 500
+        }
+      ]
+    },
+    {
+      "name": "redPanzer5_top",
+      "textureAtlas": "panzersTextureAtlas",
+      "shader": "spriteShader",
+      "initialSubTexture": "redPanzer5Top1",
+      "frames": [
+        {
+          "subTexture": "redPanzer5Top1",
+          "duration": 500
+        },
+        {
+          "subTexture": "redPanzer5Top2",
+          "duration": 500
+        }
+      ]
+    },
+    {
+      "name": "redPanzer5_left",
+      "textureAtlas": "panzersTextureAtlas",
+      "shader": "spriteShader",
+      "initialSubTexture": "redPanzer5Left1",
+      "frames": [
+        {
+          "subTexture": "redPanzer5Left1",
+          "duration": 500
+        },
+        {
+          "subTexture": "redPanzer5Left2",
+          "duration": 500
+        }
+      ]
+    },
+    {
+      "name": "redPanzer5_bottom",
+      "textureAtlas": "panzersTextureAtlas",
+      "shader": "spriteShader",
+      "initialSubTexture": "redPanzer5Bottom1",
+      "frames": [
+        {
+          "subTexture": "redPanzer5Bottom1",
+          "duration": 500
+        },
+        {
+          "subTexture": "redPanzer5Bottom2",
+          "duration": 500
+        }
+      ]
+    },
+    {
+      "name": "redPanzer5_right",
+      "textureAtlas": "panzersTextureAtlas",
+      "shader": "spriteShader",
+      "initialSubTexture": "redPanzer5Right1",
+      "frames": [
+        {
+          "subTexture": "redPanzer5Right1",
+          "duration": 500
+        },
+        {
+          "subTexture": "redPanzer5Right2",
+          "duration": 500
+        }
+      ]
+    },
+    {
+      "name": "redPanzer6_top",
+      "textureAtlas": "panzersTextureAtlas",
+      "shader": "spriteShader",
+      "initialSubTexture": "redPanzer6Top1",
+      "frames": [
+        {
+          "subTexture": "redPanzer6Top1",
+          "duration": 500
+        },
+        {
+          "subTexture": "redPanzer6Top2",
+          "duration": 500
+        }
+      ]
+    },
+    {
+      "name": "redPanzer6_left",
+      "textureAtlas": "panzersTextureAtlas",
+      "shader": "spriteShader",
+      "initialSubTexture": "redPanzer6Left1",
+      "frames": [
+        {
+          "subTexture": "redPanzer6Left1",
+          "duration": 500
+        },
+        {
+          "subTexture": "redPanzer6Left2",
+          "duration": 500
+        }
+      ]
+    },
+    {
+      "name": "redPanzer6_bottom",
+      "textureAtlas": "panzersTextureAtlas",
+      "shader": "spriteShader",
+      "initialSubTexture": "redPanzer6Bottom1",
+      "frames": [
+        {
+          "subTexture": "redPanzer6Bottom1",
+          "duration": 500
+        },
+        {
+          "subTexture": "redPanzer6Bottom2",
+          "duration": 500
+        }
+      ]
+    },
+    {
+      "name": "redPanzer6_right",
+      "textureAtlas": "panzersTextureAtlas",
+      "shader": "spriteShader",
+      "initialSubTexture": "redPanzer6Right1",
+      "frames": [
+        {
+          "subTexture": "redPanzer6Right1",
+          "duration": 500
+        },
+        {
+          "subTexture": "redPanzer6Right2",
+          "duration": 500
+        }
+      ]
+    },
+    {
+      "name": "redPanzer7_top",
+      "textureAtlas": "panzersTextureAtlas",
+      "shader": "spriteShader",
+      "initialSubTexture": "redPanzer7Top1",
+      "frames": [
+        {
+          "subTexture": "redPanzer7Top1",
+          "duration": 500
+        },
+        {
+          "subTexture": "redPanzer7Top2",
+          "duration": 500
+        }
+      ]
+    },
+    {
+      "name": "redPanzer7_left",
+      "textureAtlas": "panzersTextureAtlas",
+      "shader": "spriteShader",
+      "initialSubTexture": "redPanzer7Left1",
+      "frames": [
+        {
+          "subTexture": "redPanzer7Left1",
+          "duration": 500
+        },
+        {
+          "subTexture": "redPanzer7Left2",
+          "duration": 500
+        }
+      ]
+    },
+    {
+      "name": "redPanzer7_bottom",
+      "textureAtlas": "panzersTextureAtlas",
+      "shader": "spriteShader",
+      "initialSubTexture": "redPanzer7Bottom1",
+      "frames": [
+        {
+          "subTexture": "redPanzer7Bottom1",
+          "duration": 500
+        },
+        {
+          "subTexture": "redPanzer7Bottom2",
+          "duration": 500
+        }
+      ]
+    },
+    {
+      "name": "redPanzer7_right",
+      "textureAtlas": "panzersTextureAtlas",
+      "shader": "spriteShader",
+      "initialSubTexture": "redPanzer7Right1",
+      "frames": [
+        {
+          "subTexture": "redPanzer7Right1",
+          "duration": 500
+        },
+        {
+          "subTexture": "redPanzer7Right2",
+          "duration": 500
+        }
+      ]
+    },
+    {
+      "name": "redPanzer8_top",
+      "textureAtlas": "panzersTextureAtlas",
+      "shader": "spriteShader",
+      "initialSubTexture": "redPanzer8Top1",
+      "frames": [
+        {
+          "subTexture": "redPanzer8Top1",
+          "duration": 500
+        },
+        {
+          "subTexture": "redPanzer8Top2",
+          "duration": 500
+        }
+      ]
+    },
+    {
+      "name": "redPanzer8_left",
+      "textureAtlas": "panzersTextureAtlas",
+      "shader": "spriteShader",
+      "initialSubTexture": "redPanzer8Left1",
+      "frames": [
+        {
+          "subTexture": "redPanzer8Left1",
+          "duration": 500
+        },
+        {
+          "subTexture": "redPanzer8Left2",
+          "duration": 500
+        }
+      ]
+    },
+    {
+      "name": "redPanzer8_bottom",
+      "textureAtlas": "panzersTextureAtlas",
+      "shader": "spriteShader",
+      "initialSubTexture": "redPanzer8Bottom1",
+      "frames": [
+        {
+          "subTexture": "redPanzer8Bottom1",
+          "duration": 500
+        },
+        {
+          "subTexture": "redPanzer8Bottom2",
+          "duration": 500
+        }
+      ]
+    },
+    {
+      "name": "redPanzer8_right",
+      "textureAtlas": "panzersTextureAtlas",
+      "shader": "spriteShader",
+      "initialSubTexture": "redPanzer8Right1",
+      "frames": [
+        {
+          "subTexture": "redPanzer8Right1",
+          "duration": 500
+        },
+        {
+          "subTexture": "redPanzer8Right2",
+          "duration": 500
+        }
+      ]
+    },
+    {
       "name": "water",
       "textureAtlas": "mapTextureAtlas_8x8",
       "shader": "spriteShader",
@@ -688,7 +2687,17 @@
       ]
     }
   ],
-
+  "start_screen": [
+    "CCCFFC4F8CCF8CC484FF8CC4",
+    "0FA5E1B4FA5FFA5FA5FFA5FF",
+    "03B40CE5FA5FFA5FA5FFA73F",
+    "0CE10FA5FA5FFA5FADC4ADC4",
+    "FFFFFFFFFFFFFFFFFFFFFFFF",
+    "FFFFF8C4FCCCFCCCFCFCFFFF",
+    "FFFF87F3FF0FFF0FF0F0FFFF",
+    "FFFFA5FFFF0FFF0FF201FFFF",
+    "FFFFFBC7FC0CFF0FFF0FFFFF"
+  ],
   "levels": [
     {
       "description": [

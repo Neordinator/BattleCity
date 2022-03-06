@@ -4,6 +4,8 @@
 #include "IndexBuffer.h"
 #include "ShaderProgram.h"
 
+#include <string>
+
 namespace Render
 {
 	class Renderer

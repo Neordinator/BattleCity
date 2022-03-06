@@ -1,19 +1,9 @@
 #pragma once
 
-#include <rapidjson/document.h>
-#include <rapidjson/error/en.h>
-
-#include <sstream>
-#include <fstream>
-#include <iostream>
 #include <string>
 #include <memory>
-#include <vector>
 #include <map>
-
-#include "../Renderer/ShaderProgram.h"
-#include "../Renderer/Texture2D.h"
-#include "../Renderer/Sprite.h"
+#include <vector>
 
 namespace Render
 {
@@ -49,6 +39,7 @@ public:
 	static bool loadJSONResources(const std::string& JSONPath);
 
 	static const std::vector<std::vector<std::string>>& getLevels();
+	static const std::vector<std::string>& getStartScreen();
 
 private:
 	typedef std::map<const std::string, std::shared_ptr<Render::ShaderProgram>> ShaderProgramsMap;
@@ -61,6 +52,7 @@ private:
 	static SpritesMap m_sprites;
 
 	static std::vector<std::vector<std::string>> m_levels;
+	static std::vector<std::string> m_startScreen;
 
 	static std::string m_path;
 

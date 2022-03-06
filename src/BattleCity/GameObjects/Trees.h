@@ -1,16 +1,15 @@
 #pragma once
 
-#include <memory>
-#include <array>
+#include "../GameObjects/IGameObject.h"
 
-#include "../IGameObject.h"
-#include "../../src/Resources/ResourceManager.h"
+#include <array>
+#include <memory>
 
 namespace Render
 {
 	class Sprite;
 }
-class Ice : public IGameObject
+class Trees : public IGameObject
 {
 public:
 
@@ -24,7 +23,7 @@ public:
 
 	/*template<typename Other, typename Target>
 	BrickWall(std::shared_ptr<Other> const& other, Target* p);*/
-	Ice(const glm::vec2&, const glm::vec2&, const float, const float);
+	Trees(const glm::vec2&, const glm::vec2&, const float, const float);
 
 	//std::shared_ptr<BrickWall> operator=(BrickWall*);
 

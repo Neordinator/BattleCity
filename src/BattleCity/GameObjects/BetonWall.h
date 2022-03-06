@@ -1,10 +1,14 @@
 #pragma once
 
-#include <memory>
-#include <array>
+#include "../GameObjects/IGameObject.h"
 
-#include "../IGameObject.h"
-#include "../../src/Resources/ResourceManager.h"
+#include <array>
+#include <memory>
+
+namespace Render
+{
+	class Sprite;
+}
 
 class BetonWall : public IGameObject
 {

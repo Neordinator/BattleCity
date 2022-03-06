@@ -1,6 +1,7 @@
 #include "Border.h"
 
-class IGameObject;
+#include "../../Resources/ResourceManager.h"
+#include "../../Renderer/Sprite.h"
 
 Border::Border( const glm::vec2& position, const glm::vec2& size, const float rotation, const float layer)
 	: IGameObject(IGameObject::EObjectType::Border, position, size, rotation, layer)
